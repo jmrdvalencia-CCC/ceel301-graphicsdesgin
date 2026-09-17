@@ -1,0 +1,6 @@
+name = "ceel301-graphicsdesign"
+compatibility_date = "2024-01-01"
+
+[assets]
+directory = "./"
+exclude = [".git", "docs", "desktop.ini", "*.pdf"]
