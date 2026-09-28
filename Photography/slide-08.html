@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Slide 8 / 30 — Rule of Thirds</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><link rel="stylesheet" href="shared.css"></head>
+<body><div id="deck"><div id="pbar" style="width:26.7%"></div><div id="ctr">8 / 30</div>
+<section class="slide bg-amber active">
+  <div class="eyebrow"><span class="ln"></span>Part 2 · Composition</div>
+  <div class="ttl">Rule of <span class="acc">Thirds</span></div>
+  <div class="two-col" style="max-width:860px;align-items:center">
+    <div>
+      <div class="sub" style="margin-bottom:14px">Divide the frame into a <strong>3×3 grid</strong>. Place the subject at or near one of the four <strong>power points</strong> — not dead center.</div>
+      <table class="tbl">
+        <thead><tr><th>Placement</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td>Subject at power point</td><td>Dynamic, natural, engaging</td></tr>
+          <tr><td>Subject dead center</td><td>Static, formal — use intentionally</td></tr>
+          <tr><td>Horizon on upper third</td><td>Emphasizes foreground</td></tr>
+          <tr><td>Horizon on lower third</td><td>Emphasizes sky and space</td></tr>
+        </tbody>
+      </table>
+      <div class="kbox" style="margin-top:12px;font-size:.72rem">🎨 <strong>Design use:</strong> A subject on the left third leaves visual space on the right for a headline or CTA.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <svg width="240" height="180" viewBox="0 0 240 180" style="border-radius:10px;overflow:hidden">
+        <rect width="240" height="180" fill="rgba(255,255,255,0.05)" rx="8"/>
+        <line x1="80" y1="0" x2="80" y2="180" stroke="rgba(232,160,32,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="160" y1="0" x2="160" y2="180" stroke="rgba(232,160,32,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="0" y1="60" x2="240" y2="60" stroke="rgba(232,160,32,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="0" y1="120" x2="240" y2="120" stroke="rgba(232,160,32,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+        <circle cx="80" cy="60" r="6" fill="var(--amber)" opacity="0.9"/>
+        <circle cx="160" cy="60" r="6" fill="var(--amber)" opacity="0.9"/>
+        <circle cx="80" cy="120" r="6" fill="var(--amber)" opacity="0.9"/>
+        <circle cx="160" cy="120" r="6" fill="var(--amber)" opacity="0.9"/>
+        <text x="120" y="170" text-anchor="middle" fill="rgba(232,160,32,0.5)" font-size="9" font-family="monospace">● = Power Points</text>
+      </svg>
+      <div class="img-slot" style="width:240px;min-height:80px;font-size:.58rem">IMAGE PLACEHOLDER<br><span style="color:rgba(255,255,255,.2);font-size:.52rem">Subject at upper-left power point<br>Prompt #01</span></div>
+    </div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-07.html"><i class="fas fa-chevron-left"></i></a><a class="nbtn" id="bn" href="slide-09.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot active" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot" onclick="location='slide-30.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-09.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-07.html';});var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-09.html':'slide-07.html';});function share(){var u=location.href;if(navigator.share){navigator.share({title:'Photography & Editing',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);}); }}</script>
+</body></html>

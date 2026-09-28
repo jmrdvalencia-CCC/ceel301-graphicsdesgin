@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 2 / 30 — Learning Objectives</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div id="deck">
+<div id="pbar" style="width:6.7%"></div>
+<div id="ctr">2 / 30</div>
+<section class="slide bg-dark active">
+  <div class="eyebrow"><span class="ln"></span>Learning Objectives</div>
+  <div class="ttl">What You Will <span class="acc">Learn</span></div>
+  <div class="ladder" style="max-width:720px">
+    <div class="rung"><div class="rn">01</div><div class="rt"><div class="rtitle">Define Photography as a Design Tool</div><div class="rdesc">Explain its role in visual communication beyond documentation</div></div></div>
+    <div class="rung rose"><div class="rn rose">02</div><div class="rt"><div class="rtitle">Apply Composition Principles</div><div class="rdesc">Frame compelling, intentional images using rule of thirds, leading lines, and more</div></div></div>
+    <div class="rung teal"><div class="rn teal">03</div><div class="rt"><div class="rtitle">Identify Lighting Types</div><div class="rdesc">Explain how direction, quality, and temperature affect mood and depth</div></div></div>
+    <div class="rung violet"><div class="rn violet">04</div><div class="rt"><div class="rtitle">Understand Exposure</div><div class="rdesc">Distinguish aperture, shutter speed, and ISO and how they interact</div></div></div>
+    <div class="rung blue"><div class="rn blue">05</div><div class="rt"><div class="rtitle">Apply a Photo Editing Workflow</div><div class="rdesc">Correct and enhance images using a structured 8-step process</div></div></div>
+    <div class="rung"><div class="rn">06</div><div class="rt"><div class="rtitle">Critique Photographs</div><div class="rdesc">Evaluate composition, lighting, and editing quality using module vocabulary</div></div></div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-01.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-03.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot active" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot" onclick="location='slide-30.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button>
+<div id="toast">📋 Link copied!</div>
+</div>
+<script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-03.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-01.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-03.html':'slide-01.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Photography & Editing',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script>
+</body>
+</html>

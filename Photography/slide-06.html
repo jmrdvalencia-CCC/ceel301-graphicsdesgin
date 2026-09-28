@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Slide 6 / 30 — Raster Nature of Photography</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><link rel="stylesheet" href="shared.css"></head>
+<body><div id="deck"><div id="pbar" style="width:20%"></div><div id="ctr">6 / 30</div>
+<section class="slide bg-violet active">
+  <div class="eyebrow"><span class="ln"></span>Part 1 · Technical Foundation</div>
+  <div class="ttl">Photos are <span class="acc">Raster</span> Images</div>
+  <div class="sub" style="margin-bottom:16px">All photographs are made of a <strong>fixed grid of pixels</strong>. This has direct implications for how they are used in design.</div>
+  <div class="two-col" style="max-width:820px;gap:14px">
+    <table class="tbl">
+      <thead><tr><th>Implication</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>📏 <strong style="color:var(--amber2)">Resolution matters</strong></td><td>Must have sufficient pixels for the intended output size</td></tr>
+        <tr><td>🔍 <strong style="color:#f08090">Enlarging degrades quality</strong></td><td>Scaling beyond native resolution causes pixelation</td></tr>
+        <tr><td>💾 <strong style="color:#5de0d8">Format affects quality</strong></td><td>JPG compression reduces quality with each save; RAW preserves all data</td></tr>
+        <tr><td>🖨️ <strong style="color:#a88de0">Print needs 300 dpi</strong></td><td>Web standard is 72–96 dpi; print standard is 300 dpi</td></tr>
+      </tbody>
+    </table>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="sbox" style="text-align:left;padding:14px 16px">
+        <div style="font-family:var(--mono);font-size:.58rem;color:var(--amber);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Web Output</div>
+        <div style="font-size:1.6rem;font-weight:800;color:#fff">72–96 <span style="font-size:.9rem;color:rgba(255,255,255,.5)">dpi</span></div>
+        <div style="font-size:.65rem;color:rgba(255,255,255,.5)">JPEG or PNG · RGB color mode</div>
+      </div>
+      <div class="sbox" style="text-align:left;padding:14px 16px">
+        <div style="font-family:var(--mono);font-size:.58rem;color:var(--rose);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Print Output</div>
+        <div style="font-size:1.6rem;font-weight:800;color:#fff">300 <span style="font-size:.9rem;color:rgba(255,255,255,.5)">dpi</span></div>
+        <div style="font-size:.65rem;color:rgba(255,255,255,.5)">TIFF or JPEG · CMYK color mode</div>
+      </div>
+      <div class="kbox" style="font-size:.72rem">⚠️ <strong>Rule:</strong> Always work from the highest-resolution source. Never enlarge a low-res photo for print.</div>
+    </div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-05.html"><i class="fas fa-chevron-left"></i></a><a class="nbtn" id="bn" href="slide-07.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot active" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot" onclick="location='slide-30.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-07.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-05.html';});var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-07.html':'slide-05.html';});function share(){var u=location.href;if(navigator.share){navigator.share({title:'Photography & Editing',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);}); }}</script>
+</body></html>

@@ -1288,25 +1288,37 @@ Each brief includes: industry, business type, mission, vision, culture, target a
 
 ## ACTIVITY GUIDELINES
 
-**Instructions:**
-1. Choose **one** client brief from the list above.
-2. Read all sections carefully before sketching — the brief is your contract.
-3. Create a logo that reflects the brand's personality, values, and target audience.
-4. Your logo must work in **full color** and **black & white**.
-5. Submit your final logo as a `.PSD` file (layered) and a `.PNG` export (transparent background).
+> **Your brief was randomly assigned during the last in-person class meeting.** Scenarios were distributed in person — check your assigned brief and proceed directly to Step 1. Do not choose a different brief.
+
+**Deliverables:**
+
+1. **Word Association List** — Write 20–30 words related to your assigned brief. Circle the 5–8 most visually suggestive.
+2. **Thumbnail Grid** — 20 rough sketches fit on **1–2 pages maximum**. Each page must include:
+   - Your **full name**
+   - **Date created**
+   - **Assigned brief** (e.g., Brief A — Rooted)
+   - Each sketch clearly **numbered 1–20**
+3. **Refined Sketches** — 2–3 selected concepts redrawn at larger scale with more detail.
+4. **Final Vector Logo** — Digitized in Adobe Illustrator (or equivalent). Must include:
+   - Full color version
+   - One-color black version
+   - One-color white version (shown on a dark background)
+5. **Written Reflection** (5–7 sentences) — Identify the logo type, explain shape and line choices, describe the color psychology, and confirm the logo passes the scalability test.
 
 **Evaluation Criteria:**
 
-| Criteria | Points |
+| Criteria | Descriptions |
 |---|---|
-| Relevance to the brief | 25 |
-| Visual clarity and readability | 20 |
-| Originality and creativity | 20 |
-| Color palette adherence | 15 |
-| Typography appropriateness | 10 |
-| Black & white version works | 10 |
-| **Total** | **100** |
+| Process | Word association + thumbnails show genuine ideation |
+| Concept | Simple, appropriate, passes scalability test |
+| Vector quality | Clean paths, minimal anchor points |
+| Color variations | All three versions delivered correctly |
+| Reflection | Accurately identifies type, decisions, scalability |
 
-> **Reminder:** A logo must work at the size of a business card and the size of a billboard. Test both before submitting.
+> **Submission:** Next class meeting. Bring your sketchbook, vector file, and written reflection. Be prepared to present your process in 2 minutes.
+>
+> **Upload all outputs via Google Forms:** [INSERT GOOGLE FORMS LINK HERE]
+>
+> **Once uploaded:** Go to **CCCLMS** → find this assignment → add a remark under **Notes** that says *"Done"*.
 
 ---
