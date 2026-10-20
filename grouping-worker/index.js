@@ -73,7 +73,7 @@ export default {
 
       const { results } = await env.DB.prepare(
         'SELECT s.id, s.name, s.email, CASE WHEN gm.student_id IS NOT NULL THEN 1 ELSE 0 END as in_group ' +
-        'FROM students s LEFT JOIN group_members gm ON gm.student_id = s.id ORDER BY s.name'
+        'FROM students s LEFT JOIN group_members gm ON gm.student_id = s.id AND gm.status != \'declined\' ORDER BY s.name'
       ).all();
       return json(results);
     }
@@ -83,9 +83,9 @@ export default {
       const me = await getStudentByToken(env.DB, authToken(req));
       if (!me) return err('Unauthorized', 401);
 
-      /* check if already in a group */
+      /* check if already in a group (declined rows don't count) */
       const existing = await env.DB.prepare(
-        'SELECT gm.group_id FROM group_members gm WHERE gm.student_id=?'
+        'SELECT gm.group_id FROM group_members gm WHERE gm.student_id=? AND gm.status != \'declined\''
       ).bind(me.id).first();
       if (existing) return err('You are already in a group');
 
@@ -115,7 +115,7 @@ export default {
         const s = await env.DB.prepare('SELECT id FROM students WHERE id=?').bind(sid).first();
         if (!s) continue;
         const inGroup = await env.DB.prepare(
-          'SELECT id FROM group_members WHERE student_id=?'
+          'SELECT id FROM group_members WHERE student_id=? AND status != \'declined\''
         ).bind(sid).first();
         if (inGroup) continue;
 
@@ -178,11 +178,6 @@ export default {
         'UPDATE group_members SET status=? WHERE id=?'
       ).bind(newStatus, membership.id).run();
 
-      if (action === 'decline') {
-        /* remove the row so student can join another group */
-        await env.DB.prepare('DELETE FROM group_members WHERE id=?').bind(membership.id).run();
-      }
-
       return json({ status: newStatus });
     }
 
@@ -207,8 +202,8 @@ export default {
       const { results: members } = await env.DB.prepare(
         'SELECT status FROM group_members WHERE group_id=?'
       ).bind(group.id).all();
-      const pending = members.filter(m => m.status === 'pending');
-      if (pending.length > 0) return err('All members must accept before picking a client');
+      const pending = members.filter(function(m) { return m.status === 'pending'; });
+      if (pending.length > 0) return err('All invitations must be accepted or declined before picking a client');
 
       /* get available clients */
       const { results: available } = await env.DB.prepare(
