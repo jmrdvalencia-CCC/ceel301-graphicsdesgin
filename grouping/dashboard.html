@@ -165,7 +165,8 @@
     }
 
     if (isLeader && !isPending && !group.client) {
-      card.querySelector('#pickClientBtn').addEventListener('click', pickClient);
+      const pickBtn = card.querySelector('#pickClientBtn');
+      if (pickBtn) pickBtn.addEventListener('click', pickClient);
     }
   }
 
@@ -205,7 +206,7 @@
         '<strong style="display:block;margin-bottom:4px;">&#9888;&#65039; Please read before continuing</strong>' +
         '<ul style="margin:0;padding-left:18px;color:var(--muted);">' +
           '<li>Once a group is created, it <strong style="color:var(--text);">cannot be undone</strong>.</li>' +
-          '<li>If an invited member <strong style="color:var(--text);">declines</strong>, they will remain tied to your group and <strong style="color:var(--text);">cannot be added by others</strong>.</li>' +
+          '<li>If an invited member <strong style="color:var(--text);">declines</strong>, they are <strong style="color:var(--text);">released</strong> and can join or create another group.</li>' +
           '<li>Only members who <strong style="color:var(--text);">accept</strong> the invitation will be part of the group.</li>' +
           '<li>The group leader can pick a client brief only after <strong style="color:var(--text);">all invitations are resolved</strong>.</li>' +
         '</ul>' +
