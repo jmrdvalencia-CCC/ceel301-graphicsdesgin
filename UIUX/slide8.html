@@ -1,0 +1,84 @@
+<!-- slide8.html — User Flows -->
+<div class="slide-inner">
+
+  <div>
+    <span class="kicker">Part 2 · Section 2.3</span>
+    <h2 style="margin-top:8px;">User <span style="color:var(--accent)">Flows</span></h2>
+    <div class="h-rule" style="margin-top:10px;"></div>
+    <p style="margin-top:8px;">A <strong>user flow</strong> maps the path a specific user takes through a website to complete a specific task — more granular than a sitemap, showing decisions, branches, and outcomes.</p>
+  </div>
+
+  <div class="cols2" style="gap:20px; align-items:start;">
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+
+      <!-- Flow diagram -->
+      <span class="tag">Example — Online Order Flow</span>
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px; display:flex; flex-direction:column; gap:8px; align-items:center; font-size:11px;">
+
+        <!-- Start -->
+        <div style="background:var(--accent); color:#fff; border-radius:100px; padding:5px 16px; font-weight:600;">Landing Page</div>
+        <div style="width:1.5px; height:14px; background:var(--border);"></div>
+
+        <!-- Arrow -->
+        <div style="background:var(--tag-bg); border:1px solid var(--border); border-radius:6px; padding:5px 14px; font-weight:600; color:var(--muted);">Menu Page</div>
+        <div style="width:1.5px; height:14px; background:var(--border);"></div>
+
+        <!-- Decision diamond -->
+        <div style="width:100px; height:40px; background:var(--accent-lt); border:1.5px solid var(--accent); transform:rotate(0deg); border-radius:4px; display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--accent); font-size:10px; text-align:center; line-height:1.3;">Item<br>Selected?</div>
+
+        <!-- Branches -->
+        <div style="display:flex; gap:32px; align-items:flex-start; width:100%;">
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <div style="font-size:10px; color:var(--accent); font-weight:700;">YES</div>
+            <div style="width:1.5px; height:10px; background:var(--border);"></div>
+            <div style="background:var(--tag-bg); border:1px solid var(--border); border-radius:6px; padding:4px 10px; font-weight:600; color:var(--muted); white-space:nowrap;">Cart</div>
+            <div style="width:1.5px; height:8px; background:var(--border);"></div>
+            <div style="background:var(--tag-bg); border:1px solid var(--border); border-radius:6px; padding:4px 10px; font-weight:600; color:var(--muted); white-space:nowrap;">Checkout</div>
+            <div style="width:1.5px; height:8px; background:var(--border);"></div>
+            <div style="background:#dcfce7; border:1px solid #86efac; border-radius:6px; padding:4px 10px; font-weight:600; color:#16a34a; white-space:nowrap;">Confirmation ✓</div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <div style="font-size:10px; color:var(--muted); font-weight:700;">NO</div>
+            <div style="width:1.5px; height:10px; background:var(--border);"></div>
+            <div style="background:var(--tag-bg); border:1px solid var(--border); border-radius:6px; padding:4px 10px; font-weight:600; color:var(--muted); font-size:10px; text-align:center; line-height:1.4;">Continue<br>Browsing</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+
+      <div class="card">
+        <span class="tag">Flow Notation</span>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px; font-size:12px;">
+          <div style="display:flex; gap:10px; align-items:center;">
+            <div style="width:32px; height:20px; border:1.5px solid var(--border); border-radius:3px; flex-shrink:0;"></div>
+            <span><strong>Rectangle</strong> — a page or screen</span>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <div style="width:24px; height:24px; border:1.5px solid var(--accent); background:var(--accent-lt); transform:rotate(45deg); flex-shrink:0;"></div>
+            <span><strong>Diamond</strong> — a decision point</span>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <div style="font-size:18px; color:var(--muted); flex-shrink:0;">→</div>
+            <span><strong>Arrow</strong> — direction of navigation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="img-wrap" style="height:130px;">
+        <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800&q=80"
+             alt="User flow diagram drawn on paper with arrows and decision boxes" />
+      </div>
+
+      <div class="callout">
+        <strong>Before wireframing any page, define the user flow it belongs to.</strong> A page without a flow has no context — it is a room with no doors.
+      </div>
+
+    </div>
+  </div>
+
+</div>

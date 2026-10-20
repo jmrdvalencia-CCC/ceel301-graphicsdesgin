@@ -1,0 +1,100 @@
+<!-- slide13.html — Responsive Design & Forms -->
+<div class="slide-inner">
+
+  <div>
+    <span class="kicker">Part 5 · Sections 5.4 – 5.5</span>
+    <h2 style="margin-top:8px;">Forms & <span style="color:var(--accent)">Responsive Design</span></h2>
+    <div class="h-rule" style="margin-top:10px;"></div>
+  </div>
+
+  <div class="cols2" style="gap:24px; align-items:start;">
+
+    <!-- Forms -->
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <h3>Form Wireframing Rules</h3>
+      <ul class="checklist">
+        <li>Every input must have a visible <strong>label above</strong> the field — not inside it</li>
+        <li>Group related fields <strong>on the same row</strong></li>
+        <li>Submit button must be the <strong>primary CTA</strong></li>
+        <li>Show <strong>error and success states</strong> in annotations</li>
+        <li>Never use more fields than necessary — <strong>every extra field reduces completion</strong></li>
+      </ul>
+
+      <!-- Form mockup -->
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px; display:flex; flex-direction:column; gap:10px; font-size:11px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          <div>
+            <div style="font-weight:600; margin-bottom:3px; color:var(--text);">First Name</div>
+            <div style="border:1px solid var(--border); border-radius:4px; height:28px; background:#fafaf9;"></div>
+          </div>
+          <div>
+            <div style="font-weight:600; margin-bottom:3px; color:var(--text);">Last Name</div>
+            <div style="border:1px solid var(--border); border-radius:4px; height:28px; background:#fafaf9;"></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-weight:600; margin-bottom:3px; color:var(--text);">Email Address</div>
+          <div style="border:1px solid var(--border); border-radius:4px; height:28px; background:#fafaf9;"></div>
+        </div>
+        <div>
+          <div style="font-weight:600; margin-bottom:3px; color:var(--text);">Message</div>
+          <div style="border:1px solid var(--border); border-radius:4px; height:48px; background:#fafaf9;"></div>
+        </div>
+        <div style="background:var(--accent); color:#fff; border-radius:5px; padding:7px; text-align:center; font-weight:700; font-size:11px;">Send Message</div>
+      </div>
+    </div>
+
+    <!-- Responsive -->
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <h3>Responsive Breakpoints</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Breakpoint</th><th>Width</th><th>Layout</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Mobile</strong></td><td>320–767px</td><td>Single column, stacked</td></tr>
+            <tr><td><strong>Tablet</strong></td><td>768–1023px</td><td>2-column, some stacking</td></tr>
+            <tr><td><strong>Desktop</strong></td><td>1024px+</td><td>Full multi-column</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Desktop vs Mobile comparison -->
+      <div style="display:grid; grid-template-columns:2fr 1fr; gap:10px; align-items:start;">
+        <div>
+          <div style="font-size:10px; font-weight:600; color:var(--muted); margin-bottom:5px; text-transform:uppercase; letter-spacing:.06em;">Desktop</div>
+          <div style="border:1px solid var(--border); border-radius:6px; overflow:hidden;">
+            <div style="background:var(--tag-bg); height:16px; border-bottom:1px solid var(--border);"></div>
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; padding:6px;">
+              <div style="height:30px; background:#e8e5e0; border-radius:3px;"></div>
+              <div style="height:30px; background:#e8e5e0; border-radius:3px;"></div>
+              <div style="height:30px; background:#e8e5e0; border-radius:3px;"></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:10px; font-weight:600; color:var(--muted); margin-bottom:5px; text-transform:uppercase; letter-spacing:.06em;">Mobile</div>
+          <div style="border:1px solid var(--border); border-radius:6px; overflow:hidden; width:60px; margin:0 auto;">
+            <div style="background:var(--tag-bg); height:12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:flex-end; padding-right:4px;">
+              <div style="width:8px; height:5px; display:flex; flex-direction:column; gap:1px;">
+                <div style="height:1px; background:var(--muted);"></div>
+                <div style="height:1px; background:var(--muted);"></div>
+                <div style="height:1px; background:var(--muted);"></div>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:3px; padding:4px;">
+              <div style="height:20px; background:#e8e5e0; border-radius:2px;"></div>
+              <div style="height:20px; background:#e8e5e0; border-radius:2px;"></div>
+              <div style="height:20px; background:#e8e5e0; border-radius:2px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="font-size:12px;">
+        The mobile wireframe is <strong>not a shrunken desktop</strong> — it is a re-prioritized layout. Decide what is essential and what can be hidden or moved.
+      </div>
+    </div>
+
+  </div>
+
+</div>

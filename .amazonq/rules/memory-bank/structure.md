@@ -66,6 +66,10 @@ ceel301-graphicsdesgin/
 │   ├── index.html
 │   └── slide-01.html – slide-20.html
 │
+├── UIUX/                             # UI/UX Web Graphics & Wireframing module
+│   ├── index.html                    # Self-contained deck (styles + shell inline)
+│   └── slides.js                     # All 14 slides as JS strings + nav engine
+│
 └── docs/                             # Source course documents (Markdown, DOCX, GDoc)
 ```
 
@@ -85,3 +89,12 @@ ceel301-graphicsdesgin/
 - **Inline `<style>` blocks** inside each HTML file for page-specific styles
 - **Shared module files** (`shared.js`, `shared.css`) imported via `<script src>` / `<link href>` for cross-page consistency within a module
 - **Cloudflare Workers** deployment via `wrangler.toml`
+
+## UIUX Module — Special Pattern
+
+The UIUX/ module uses a different pattern from all other modules — **no separate slide HTML files**:
+- `index.html` contains all CSS inline in a `<style>` block and the shell HTML
+- `slides.js` contains all 14 slides as **regular JS string concatenation** (NOT template literals) assigned to a `SLIDES[]` array, plus the full nav engine
+- `init()` is called at the end of `slides.js` after all slides are defined — no `DOMContentLoaded` needed because `<script src="slides.js">` is at the bottom of `<body>`
+- Slides show/hide via `display:none` / `display:flex` (CSS class `.active`) — no fetch, no transitions, no IIFE
+- **Critical:** Do NOT use backtick template literals for slide HTML strings — use single-quoted strings with `+` concatenation. Backticks caused silent failures in Chrome when opening via `file://`

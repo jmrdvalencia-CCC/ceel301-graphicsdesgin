@@ -1,0 +1,96 @@
+<!-- slide10.html — Grid System & Above the Fold -->
+<div class="slide-inner">
+
+  <div>
+    <span class="kicker">Part 3 · Sections 3.3 – 3.4</span>
+    <h2 style="margin-top:8px;">Grid System & <span style="color:var(--accent)">Above the Fold</span></h2>
+    <div class="h-rule" style="margin-top:10px;"></div>
+  </div>
+
+  <div class="cols2" style="gap:24px; align-items:start;">
+
+    <!-- Grid -->
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <h3>The Grid System</h3>
+      <p>Web layouts are built on <strong>grids</strong> — invisible columns that align content consistently across the page.</p>
+
+      <!-- Visual grid demo -->
+      <div style="border:1px solid var(--border); border-radius:var(--radius); padding:12px; background:var(--surface);">
+        <div style="font-size:10px; color:var(--muted); margin-bottom:8px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;">12-Column Grid (Desktop)</div>
+        <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:3px; margin-bottom:10px;">
+          <!-- 12 column markers -->
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+          <div style="height:20px; background:var(--accent-lt); border-radius:2px; border:1px solid #bfdbfe;"></div>
+        </div>
+        <!-- Layout examples -->
+        <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:3px; margin-bottom:6px;">
+          <div style="grid-column:span 12; height:14px; background:#e0e7ff; border-radius:2px;"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:3px; margin-bottom:6px;">
+          <div style="grid-column:span 6; height:14px; background:#dbeafe; border-radius:2px;"></div>
+          <div style="grid-column:span 6; height:14px; background:#dbeafe; border-radius:2px;"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:3px;">
+          <div style="grid-column:span 4; height:14px; background:#eff6ff; border-radius:2px;"></div>
+          <div style="grid-column:span 4; height:14px; background:#eff6ff; border-radius:2px;"></div>
+          <div style="grid-column:span 4; height:14px; background:#eff6ff; border-radius:2px;"></div>
+        </div>
+        <div style="font-size:9px; color:var(--muted); margin-top:8px;">Full-width · Half · Third</div>
+      </div>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Grid</th><th>Columns</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td><strong>12-col</strong></td><td>12</td><td>Desktop — most flexible</td></tr>
+            <tr><td><strong>8-col</strong></td><td>8</td><td>Tablet layouts</td></tr>
+            <tr><td><strong>4-col</strong></td><td>4</td><td>Mobile layouts</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Above the fold -->
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <h3>Above the Fold</h3>
+      <p>The <strong>fold</strong> is the bottom edge of the visible screen before the user scrolls. Content above it is seen immediately.</p>
+
+      <!-- Fold diagram -->
+      <div style="border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--surface);">
+        <div style="padding:8px 12px; background:var(--tag-bg); border-bottom:1px solid var(--border); font-size:10px; font-weight:600; color:var(--muted);">HEADER — Logo + Nav</div>
+        <div style="padding:12px; background:#f7f6f4;">
+          <div style="font-size:10px; font-weight:700; color:var(--accent); margin-bottom:6px;">HERO — Headline + CTA</div>
+          <div style="height:8px; background:#ddd; border-radius:2px; margin-bottom:4px; width:70%;"></div>
+          <div style="height:8px; background:#ddd; border-radius:2px; margin-bottom:8px; width:45%;"></div>
+          <div style="display:inline-block; background:var(--accent); color:#fff; border-radius:4px; padding:4px 12px; font-size:9px; font-weight:700;">Order Now</div>
+        </div>
+        <!-- Fold line -->
+        <div style="border-top:2px dashed var(--accent); padding:6px 12px; background:var(--accent-lt); font-size:9px; font-weight:700; color:var(--accent); letter-spacing:.08em; text-transform:uppercase;">↑ The Fold — visible without scrolling</div>
+        <div style="padding:10px 12px; opacity:.4;">
+          <div style="font-size:10px; color:var(--muted); margin-bottom:6px;">CONTENT BELOW FOLD</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
+            <div style="height:30px; background:#e8e5e0; border-radius:3px;"></div>
+            <div style="height:30px; background:#e8e5e0; border-radius:3px;"></div>
+            <div style="height:30px; background:#e8e5e0; border-radius:3px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Above the fold must contain:</strong> brand identity, what the site is about, primary CTA, and navigation to key sections.
+      </div>
+    </div>
+
+  </div>
+
+</div>
