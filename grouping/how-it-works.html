@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group Formation — How It Works</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    body { display: flex; flex-direction: column; min-height: 100vh; }
+    .page { max-width: 680px; margin: 0 auto; padding: 48px 24px 80px; width: 100%; }
+
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero .badge {
+      display: inline-block; background: var(--accent); color: #0a0a14;
+      font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      padding: 5px 16px; border-radius: 100px; margin-bottom: 16px;
+    }
+    .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 10px; }
+    .hero p { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 480px; margin: 0 auto; }
+
+    /* steps */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 20px; padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      background: var(--accent); color: #0a0a14;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; margin-top: 2px;
+    }
+    .step-body { flex: 1; }
+    .step-who {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 4px;
+    }
+    .step-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .step-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .step-desc b { color: var(--text); font-weight: 600; }
+
+    /* note boxes */
+    .note {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px 16px; margin-top: 8px;
+      font-size: 12px; color: var(--muted); line-height: 1.6;
+    }
+    .note .note-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    /* type cards */
+    .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+    @media (max-width: 480px) { .type-grid { grid-template-columns: 1fr; } }
+    .type-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px 16px;
+    }
+    .type-card .type-icon { font-size: 24px; margin-bottom: 6px; }
+    .type-card .type-name { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .type-card .type-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* cta */
+    .cta { text-align: center; margin-top: 48px; }
+    .cta p { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+
+<button class="theme-btn" id="themeBtn">&#127769;</button>
+
+<div class="page">
+
+  <div class="hero">
+    <div class="badge">CEEL301 &middot; Logo Design Activity</div>
+    <h1>How Group Formation Works</h1>
+    <p>Follow these steps to form your group, confirm your members, and get your randomly assigned client brief.</p>
+  </div>
+
+  <!-- type selection -->
+  <div style="margin-bottom:40px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Choose Your Setup</div>
+    <div class="type-grid">
+      <div class="type-card">
+        <div class="type-icon">&#129489;</div>
+        <div class="type-name">Solo</div>
+        <div class="type-desc">Work independently. No members to invite. You pick your client brief right after logging in.</div>
+      </div>
+      <div class="type-card">
+        <div class="type-icon">&#128101;</div>
+        <div class="type-name">Group</div>
+        <div class="type-desc">Team of 2 or 3 students. One person leads and invites the others. Max 3 members total.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- steps -->
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-who">Group Leader / Solo Student</div>
+        <div class="step-title">Log in with your credentials</div>
+        <div class="step-desc">
+          Go to the Group Formation page and sign in using your <b>school email</b> and <b>student number</b> as your password.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-who">Group Leader / Solo Student</div>
+        <div class="step-title">Set up your group</div>
+        <div class="step-desc">
+          Choose <b>Solo</b> or <b>Group</b>, enter a group or project name, then select up to <b>2 classmates</b> from the list to invite.<br><br>
+          Students who are already in a group will appear greyed out and cannot be selected. This also applies to students who have been <b>selected as a member by another leader</b> — even if they haven't accepted yet, they are reserved and cannot be picked by anyone else.
+        </div>
+        <div class="note">
+          <span class="note-icon">&#9888;&#65039;</span>
+          <span><b>Once a group is created, it cannot be undone.</b> Make sure your group name and selected members are correct before confirming.</span>
+        </div>
+        <div class="note" style="margin-top:8px;">
+          <span class="note-icon">&#128161;</span>
+          <span>If you chose <b>Solo</b>, skip to Step 5 — you can pick your client brief immediately after creating.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-who">Invited Members</div>
+        <div class="step-title">Log in and accept the invitation</div>
+        <div class="step-desc">
+          Each invited member must log in using their own <b>school email</b> and <b>student number</b>. Upon login, they will see an invitation banner showing the group name and leader.<br><br>
+          Click <b>&#10003; Accept</b> to confirm membership, or <b>&#10007; Decline</b> to reject.
+        </div>
+        <div class="note">
+          <span class="note-icon">&#9888;&#65039;</span>
+          <span>If a member <b>declines</b>, they will remain tied to the group. They <b>cannot be added to any other group</b> and will not be counted as an active member.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-who">Group Leader</div>
+        <div class="step-title">Log back in to verify all members accepted</div>
+        <div class="step-desc">
+          Once all invited members have responded, log back in to your dashboard. You will see each member listed with their status:<br><br>
+          &bull; <b style="color:#22c55e;">Accepted</b> &mdash; confirmed and active member<br>
+          &bull; <b style="color:#f59e0b;">Pending</b> &mdash; has not yet responded<br>
+          &bull; <b style="color:#ef4444;">Declined</b> &mdash; rejected the invite; still tied to your group but not an active member
+        </div>
+        <div class="note">
+          <span class="note-icon">&#9888;&#65039;</span>
+          <span>The <b>Pick Client</b> button will only appear once there are <b>no more pending</b> invitations. Remind any pending members to log in and respond.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-who">Group Leader / Solo Student</div>
+        <div class="step-title">Pick your client brief randomly</div>
+        <div class="step-desc">
+          Once your group is confirmed, click the <b>&#127922; Pick Client Randomly</b> button on your dashboard. The system will randomly assign one of the <b>40 available client briefs</b> to your group.<br><br>
+          The assigned client will be shown to all group members on their dashboards. This is the company you will design a logo for.
+        </div>
+        <div class="note">
+          <span class="note-icon">&#128203;</span>
+          <span>Each client brief includes the company name, industry, mission, vision, brand personality, target audience, and mandatory design elements.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- cta -->
+  <div class="cta">
+    <p>Ready to start? Click below to go to the Group Formation page.</p>
+    <a href="index.html" class="btn btn-primary" style="font-size:15px;padding:14px 32px;">
+      &#128101; Go to Group Formation
+    </a>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -118,7 +118,8 @@
         '</div>';
     } else if (isLeader && !isPending) {
       clientHtml =
-        '<div class="no-client-box">No client assigned yet. As group leader, you can pick one randomly.</div>' +
+        '<div class="no-client-box">No client assigned yet. As group leader, you can pick one randomly.<br>' +
+        '<span style="font-size:12px;">Note: all pending invitations must be accepted or declined first.</span></div>' +
         '<div style="margin-top:12px;">' +
           '<button class="btn btn-primary" id="pickClientBtn">&#127922; Pick Client Randomly</button>' +
           '<div class="alert alert-err" id="pickErr" style="margin-top:10px;"></div>' +
@@ -200,6 +201,15 @@
       '<h2>Set Up Your Group</h2>' +
       '<p class="sub">Choose solo or form a group of up to 3 students.</p>' +
       '<div id="alertBox" class="alert alert-err"></div>' +
+      '<div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:12px;padding:14px 16px;margin-bottom:20px;font-size:13px;line-height:1.6;">' +
+        '<strong style="display:block;margin-bottom:4px;">&#9888;&#65039; Please read before continuing</strong>' +
+        '<ul style="margin:0;padding-left:18px;color:var(--muted);">' +
+          '<li>Once a group is created, it <strong style="color:var(--text);">cannot be undone</strong>.</li>' +
+          '<li>If an invited member <strong style="color:var(--text);">declines</strong>, they will remain tied to your group and <strong style="color:var(--text);">cannot be added by others</strong>.</li>' +
+          '<li>Only members who <strong style="color:var(--text);">accept</strong> the invitation will be part of the group.</li>' +
+          '<li>The group leader can pick a client brief only after <strong style="color:var(--text);">all invitations are resolved</strong>.</li>' +
+        '</ul>' +
+      '</div>' +
       '<div class="mode-grid">' +
         '<div class="mode-card" id="modeSolo">' +
           '<div class="icon">&#129489;</div>' +
