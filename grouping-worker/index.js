@@ -133,7 +133,7 @@ export default {
       if (!me) return err('Unauthorized', 401);
 
       const membership = await env.DB.prepare(
-        'SELECT gm.*, g.name as group_name, g.is_solo, g.leader_id FROM group_members gm JOIN groups g ON g.id=gm.group_id WHERE gm.student_id=?'
+        'SELECT gm.*, g.name as group_name, g.is_solo, g.leader_id FROM group_members gm JOIN groups g ON g.id=gm.group_id WHERE gm.student_id=? AND gm.status != \'declined\''
       ).bind(me.id).first();
 
       if (!membership) return json({ group: null });
