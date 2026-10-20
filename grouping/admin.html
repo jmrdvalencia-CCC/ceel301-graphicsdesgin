@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group Formation — Admin</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    body { display: flex; flex-direction: column; }
+    .main { flex: 1; padding: 32px 24px 60px; max-width: 900px; margin: 0 auto; width: 100%; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+    .tab {
+      padding: 9px 18px; border-radius: 10px; font-size: 13px; font-weight: 600;
+      border: 1px solid var(--border); background: transparent; color: var(--muted);
+      cursor: pointer; transition: all 0.15s;
+    }
+    .tab.active { background: var(--accent); color: #0a0a14; border-color: var(--accent); }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .csv-note { font-size: 12px; color: var(--muted); margin-bottom: 12px; line-height: 1.6; }
+    .csv-note code {
+      background: var(--surface2); padding: 2px 6px; border-radius: 4px;
+      font-family: monospace; font-size: 11px;
+    }
+    textarea {
+      width: 100%; background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 14px; color: var(--text);
+      font-family: monospace; font-size: 12px; resize: vertical; min-height: 160px;
+      transition: border-color 0.2s;
+    }
+    textarea:focus { outline: none; border-color: var(--accent); }
+    .stat-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+    .stat-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 20px; flex: 1; min-width: 120px;
+    }
+    .stat-box .num { font-size: 28px; font-weight: 800; color: var(--accent); }
+    .stat-box .lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .group-row td:first-child { font-weight: 600; }
+    .members-cell { display: flex; flex-direction: column; gap: 3px; }
+    .m-line { font-size: 12px; display: flex; align-items: center; gap: 6px; }
+  </style>
+</head>
+<body>
+
+<button class="theme-btn" id="themeBtn">🌙</button>
+
+<div class="topbar">
+  <span class="brand">📋 Group Formation · Admin</span>
+</div>
+
+<div class="main">
+
+  <!-- admin token gate -->
+  <div id="tokenGate" class="card" style="max-width:420px;margin:0 auto 32px;">
+    <div class="eyebrow">Admin Access</div>
+    <h2>Enter Admin Token</h2>
+    <div class="field">
+      <label>Admin Token</label>
+      <input type="password" id="adminTokenInput" placeholder="Paste your admin token" />
+    </div>
+    <button class="btn btn-primary btn-full" id="tokenBtn">Unlock</button>
+    <div class="alert alert-err" id="tokenErr" style="margin-top:12px;"></div>
+  </div>
+
+  <div id="adminContent" style="display:none;">
+    <div class="tabs">
+      <button class="tab active" data-tab="groups">Groups</button>
+      <button class="tab" data-tab="upload">Upload Students</button>
+    </div>
+
+    <!-- GROUPS PANEL -->
+    <div class="panel active" id="tab-groups">
+      <div class="stat-row" id="statsRow"></div>
+      <div class="table-wrap">
+        <table id="groupsTable">
+          <thead>
+            <tr>
+              <th>#</th><th>Group Name</th><th>Type</th><th>Leader</th><th>Members</th><th>Assigned Client</th><th>Created</th>
+            </tr>
+          </thead>
+          <tbody id="groupsTbody">
+            <tr><td colspan="7" style="color:var(--muted);text-align:center;padding:24px;">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- UPLOAD PANEL -->
+    <div class="panel" id="tab-upload">
+      <p class="csv-note">
+        Paste CSV rows below. Format: <code>name,email,student_no</code> — one student per line.<br>
+        Example: <code>Juan Dela Cruz,juan@school.edu,2024-00001</code><br>
+        Existing students (same email) will be skipped.
+      </p>
+      <div class="field">
+        <label>CSV Data</label>
+        <textarea id="csvInput" placeholder="Juan Dela Cruz,juan@school.edu,2024-00001&#10;Maria Santos,maria@school.edu,2024-00002"></textarea>
+      </div>
+      <div class="alert alert-err" id="uploadErr"></div>
+      <div class="alert alert-ok"  id="uploadOk"></div>
+      <button class="btn btn-primary" id="uploadBtn">Upload Students</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+  let adminToken = '';
+
+  /* tab switching */
+  document.querySelectorAll('.tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  /* token gate */
+  document.getElementById('tokenBtn').addEventListener('click', async function() {
+    const t = document.getElementById('adminTokenInput').value.trim();
+    if (!t) return;
+    adminToken = t;
+    try {
+      await fetchGroups();
+      document.getElementById('tokenGate').style.display = 'none';
+      document.getElementById('adminContent').style.display = 'block';
+    } catch (_) {
+      const el = document.getElementById('tokenErr');
+      el.textContent = 'Invalid token or server error.';
+      el.classList.add('show');
+    }
+  });
+
+  /* fetch & render groups */
+  async function fetchGroups() {
+    const res = await fetch(API_BASE + '/api/admin/groups', {
+      headers: { 'Authorization': 'Bearer ' + adminToken },
+    });
+    if (!res.ok) throw new Error('Forbidden');
+    const groups = await res.json();
+    renderGroups(groups);
+    return groups;
+  }
+
+  function renderGroups(groups) {
+    const total = groups.length;
+    const solo = groups.filter(function(g) { return g.is_solo; }).length;
+    const confirmed = groups.filter(function(g) {
+      return g.members.every(function(m) { return m.status === 'accepted'; });
+    }).length;
+    const assigned = groups.filter(function(g) { return g.client; }).length;
+
+    document.getElementById('statsRow').innerHTML =
+      stat(total, 'Total Groups') +
+      stat(solo, 'Solo') +
+      stat(total - solo, 'Team Groups') +
+      stat(confirmed, 'Fully Confirmed') +
+      stat(assigned, 'Client Assigned');
+
+    const tbody = document.getElementById('groupsTbody');
+    if (!groups.length) {
+      tbody.innerHTML = '<tr><td colspan="7" style="color:var(--muted);text-align:center;padding:24px;">No groups yet.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = groups.map(function(g, i) {
+      return '<tr class="group-row">' +
+        '<td>' + (i + 1) + '</td>' +
+        '<td>' + esc(g.name) + '</td>' +
+        '<td>' + (g.is_solo ? 'Solo' : 'Group') + '</td>' +
+        '<td>' + esc(g.leader_name) + '</td>' +
+        '<td><div class="members-cell">' +
+          g.members.map(function(m) {
+            return '<div class="m-line">' +
+              '<span class="status-badge status-' + m.status + '">' + m.status + '</span>' +
+              esc(m.name) +
+            '</div>';
+          }).join('') +
+        '</div></td>' +
+        '<td>' + (g.client
+          ? '<strong>' + esc(g.client.client_name) + '</strong><br><span style="font-size:11px;color:var(--muted);">' + esc(g.client.industry) + '</span>'
+          : '<span style="font-size:12px;color:var(--muted);">Not assigned</span>') + '</td>' +
+        '<td style="font-size:11px;color:var(--muted);">' + g.created_at.slice(0, 16).replace('T', ' ') + '</td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  function stat(n, label) {
+    return '<div class="stat-box"><div class="num">' + n + '</div><div class="lbl">' + label + '</div></div>';
+  }
+
+  /* upload students */
+  document.getElementById('uploadBtn').addEventListener('click', async function() {
+    const raw = document.getElementById('csvInput').value.trim();
+    const errEl = document.getElementById('uploadErr');
+    const okEl  = document.getElementById('uploadOk');
+    errEl.className = 'alert alert-err';
+    okEl.className  = 'alert alert-ok';
+
+    if (!raw) { errEl.textContent = 'Paste CSV data first.'; errEl.classList.add('show'); return; }
+
+    const students = [];
+    raw.split('\n').forEach(function(line) {
+      const parts = line.split(',').map(function(s) { return s.trim(); });
+      if (parts.length >= 3) students.push({ name: parts[0], email: parts[1], student_no: parts[2] });
+    });
+
+    if (!students.length) {
+      errEl.textContent = 'No valid rows found. Check format: name,email,student_no';
+      errEl.classList.add('show');
+      return;
+    }
+
+    const btn = document.getElementById('uploadBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Uploading...';
+
+    try {
+      const res = await fetch(API_BASE + '/api/admin/seed', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + adminToken },
+        body: JSON.stringify({ students: students }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload failed');
+      okEl.textContent = data.inserted + ' student(s) added successfully.';
+      okEl.classList.add('show');
+      document.getElementById('csvInput').value = '';
+    } catch (ex) {
+      errEl.textContent = ex.message;
+      errEl.classList.add('show');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Upload Students';
+    }
+  });
+</script>
+</body>
+</html>

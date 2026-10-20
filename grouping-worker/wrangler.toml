@@ -1,0 +1,9 @@
+name = "grouping-api"
+compatibility_date = "2024-01-01"
+main = "index.js"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "grouping-db"
+database_id = "62f645d3-4db0-4b45-9800-b2743ea57f3f"
+

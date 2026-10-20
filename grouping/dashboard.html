@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group Formation — Dashboard</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    body { display: flex; flex-direction: column; }
+    .main { flex: 1; display: flex; align-items: flex-start; justify-content: center; padding: 32px 16px 60px; }
+    .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+    @media (max-width: 480px) { .mode-grid { grid-template-columns: 1fr; } }
+    .mode-card {
+      border: 2px solid var(--border); border-radius: 14px; padding: 20px;
+      cursor: pointer; transition: all 0.2s; text-align: center;
+    }
+    .mode-card:hover { border-color: var(--accent); }
+    .mode-card.active { border-color: var(--accent); background: var(--accent-soft); }
+    .mode-card .icon { font-size: 32px; margin-bottom: 8px; }
+    .mode-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .mode-card p { font-size: 12px; color: var(--muted); }
+    .section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+    }
+    #memberPicker { display: none; }
+    #selectedChips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; min-height: 28px; }
+    .chip {
+      display: flex; align-items: center; gap: 5px;
+      background: var(--accent-soft); border: 1px solid var(--accent);
+      border-radius: 100px; padding: 4px 10px; font-size: 12px; font-weight: 600;
+    }
+    .chip button {
+      background: none; border: none; color: var(--accent);
+      cursor: pointer; font-size: 14px; line-height: 1; padding: 0;
+    }
+    .invite-note { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+    .invite-banner {
+      background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3);
+      border-radius: 14px; padding: 20px 22px; margin-bottom: 20px;
+    }
+    .invite-banner h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .invite-banner p { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+    .invite-actions { display: flex; gap: 10px; }
+    .client-box {
+      margin-top: 20px; padding: 18px 20px;
+      background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 14px;
+    }
+    .client-box .client-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+    }
+    .client-box .client-name { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+    .client-box .client-industry { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .client-box .client-tagline { font-size: 13px; line-height: 1.5; }
+    .no-client-box {
+      margin-top: 16px; padding: 14px 16px;
+      background: var(--surface2); border-radius: 10px;
+      font-size: 13px; color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<button class="theme-btn" id="themeBtn">&#127769;</button>
+
+<div class="topbar">
+  <span class="brand">&#128203; Group Formation</span>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <span class="user-info" id="userLabel"></span>
+    <button class="btn btn-outline" style="padding:6px 12px;font-size:12px;" id="logoutBtn">Sign out</button>
+  </div>
+</div>
+
+<div class="main">
+  <div class="card card-wide" id="mainCard">
+    <div class="spinner" style="margin:40px auto;display:block;width:32px;height:32px;"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+  requireAuth();
+
+  const student = getStudent();
+  document.getElementById('userLabel').textContent = student.name;
+  document.getElementById('logoutBtn').addEventListener('click', logout);
+
+  let allStudents = [];
+  let selectedIds = [];
+  let mode = 'group';
+
+  async function init() {
+    const card = document.getElementById('mainCard');
+    let groupData;
+    try { groupData = await api('/api/groups/mine'); } catch (_) { groupData = { group: null }; }
+
+    if (groupData.group) {
+      renderGroupStatus(card, groupData.group);
+    } else {
+      try { allStudents = await api('/api/students'); } catch (_) { allStudents = []; }
+      renderCreateForm(card);
+    }
+  }
+
+  function renderGroupStatus(card, group) {
+    const isPending = group.my_status === 'pending';
+    const isLeader = group.leader_id === student.id;
+
+    let clientHtml = '';
+    if (group.client) {
+      clientHtml =
+        '<div class="client-box">' +
+          '<div class="client-eyebrow">Assigned Client Brief</div>' +
+          '<div class="client-name">' + esc(group.client.client_name) + '</div>' +
+          '<div class="client-industry">' + esc(group.client.industry) + '</div>' +
+          '<div class="client-tagline">' + esc(group.client.tagline) + '</div>' +
+        '</div>';
+    } else if (isLeader && !isPending) {
+      clientHtml =
+        '<div class="no-client-box">No client assigned yet. As group leader, you can pick one randomly.</div>' +
+        '<div style="margin-top:12px;">' +
+          '<button class="btn btn-primary" id="pickClientBtn">&#127922; Pick Client Randomly</button>' +
+          '<div class="alert alert-err" id="pickErr" style="margin-top:10px;"></div>' +
+        '</div>';
+    } else {
+      clientHtml = '<div class="no-client-box">&#9203; Waiting for group leader to pick a client brief.</div>';
+    }
+
+    card.innerHTML =
+      '<div class="eyebrow">Your Group</div>' +
+      '<h2 style="margin-bottom:4px;">' + esc(group.name) + '</h2>' +
+      '<p class="sub" style="margin-bottom:20px;">' + (group.is_solo ? 'Solo submission' : 'Group of up to 3') + '</p>' +
+      (isPending
+        ? '<div class="invite-banner">' +
+            '<h3>You have been invited!</h3>' +
+            '<p>You were added to this group. Accept to confirm your membership.</p>' +
+            '<div class="invite-actions">' +
+              '<button class="btn btn-primary" id="acceptBtn">&#10003; Accept</button>' +
+              '<button class="btn btn-danger" id="declineBtn">&#10007; Decline</button>' +
+            '</div>' +
+          '</div>'
+        : '') +
+      '<div class="section-label">Members</div>' +
+      '<div class="group-card">' +
+        '<div class="group-name">' + esc(group.name) + '</div>' +
+        '<div class="group-meta">' + (group.is_solo ? 'Solo' : group.members.length + ' member(s)') + '</div>' +
+        group.members.map(function(m) {
+          return '<div class="member-row">' +
+            '<div class="student-avatar">' + initials(m.name) + '</div>' +
+            '<div class="student-info">' +
+              '<div class="student-name">' + esc(m.name) + (m.student_id === group.leader_id ? ' &#128081;' : '') + '</div>' +
+              '<div class="student-email">' + esc(m.email) + '</div>' +
+            '</div>' +
+            '<span class="status-badge status-' + m.status + '">' + m.status + '</span>' +
+          '</div>';
+        }).join('') +
+      '</div>' +
+      clientHtml;
+
+    if (isPending) {
+      card.querySelector('#acceptBtn').addEventListener('click', function() { acknowledge('accept'); });
+      card.querySelector('#declineBtn').addEventListener('click', function() { acknowledge('decline'); });
+    }
+
+    if (isLeader && !isPending && !group.client) {
+      card.querySelector('#pickClientBtn').addEventListener('click', pickClient);
+    }
+  }
+
+  async function acknowledge(action) {
+    try {
+      await api('/api/groups/acknowledge', 'POST', { action: action });
+      location.reload();
+    } catch (ex) {
+      alert(ex.message);
+    }
+  }
+
+  async function pickClient() {
+    const btn = document.getElementById('pickClientBtn');
+    const errEl = document.getElementById('pickErr');
+    errEl.className = 'alert alert-err';
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Picking...';
+    try {
+      await api('/api/groups/assign-client', 'POST', {});
+      location.reload();
+    } catch (ex) {
+      errEl.textContent = ex.message;
+      errEl.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = '&#127922; Pick Client Randomly';
+    }
+  }
+
+  function renderCreateForm(card) {
+    card.innerHTML =
+      '<div class="eyebrow">CEEL301 &middot; Graphics Design</div>' +
+      '<h2>Set Up Your Group</h2>' +
+      '<p class="sub">Choose solo or form a group of up to 3 students.</p>' +
+      '<div id="alertBox" class="alert alert-err"></div>' +
+      '<div class="mode-grid">' +
+        '<div class="mode-card" id="modeSolo">' +
+          '<div class="icon">&#129489;</div>' +
+          '<h3>Solo</h3>' +
+          '<p>Work independently on the activity.</p>' +
+        '</div>' +
+        '<div class="mode-card active" id="modeGroup">' +
+          '<div class="icon">&#128101;</div>' +
+          '<h3>Group</h3>' +
+          '<p>Team up with 1-2 classmates (max 3).</p>' +
+        '</div>' +
+      '</div>' +
+      '<div class="field">' +
+        '<label>Group / Project Name</label>' +
+        '<input type="text" id="groupName" placeholder="e.g. Team Pixel" maxlength="60" />' +
+      '</div>' +
+      '<div id="memberPicker">' +
+        '<div class="section-label">Add Members (max 2)</div>' +
+        '<p class="invite-note">Selected members will need to log in and accept the invitation.</p>' +
+        '<div id="selectedChips"></div>' +
+        '<input class="search-input" id="searchInput" placeholder="Search by name or email..." />' +
+        '<div class="student-list" id="studentList"></div>' +
+      '</div>' +
+      '<button class="btn btn-primary btn-full" id="createBtn">Create Group</button>';
+
+    document.getElementById('modeSolo').addEventListener('click', function() { setMode('solo'); });
+    document.getElementById('modeGroup').addEventListener('click', function() { setMode('group'); });
+    document.getElementById('searchInput').addEventListener('input', renderStudentList);
+    document.getElementById('createBtn').addEventListener('click', createGroup);
+
+    setMode('group');
+  }
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('modeSolo').classList.toggle('active', m === 'solo');
+    document.getElementById('modeGroup').classList.toggle('active', m === 'group');
+    document.getElementById('memberPicker').style.display = m === 'group' ? 'block' : 'none';
+    if (m === 'solo') { selectedIds = []; renderChips(); }
+    renderStudentList();
+  }
+
+  function renderStudentList() {
+    const q = (document.getElementById('searchInput') ? document.getElementById('searchInput').value : '').toLowerCase();
+    const list = document.getElementById('studentList');
+    if (!list) return;
+
+    const filtered = allStudents.filter(function(s) {
+      return s.id !== student.id &&
+        (s.name.toLowerCase().includes(q) || s.email.toLowerCase().includes(q));
+    });
+
+    list.innerHTML = filtered.map(function(s) {
+      const sel = selectedIds.includes(s.id);
+      const taken = s.in_group && !sel;
+      const maxed = !sel && selectedIds.length >= 2;
+      const disabled = taken || maxed;
+      return '<div class="student-row' + (sel ? ' selected' : '') + (disabled ? ' disabled' : '') +
+        '" data-id="' + s.id + '">' +
+        '<div class="student-avatar" style="' + (taken ? 'background:var(--border);color:var(--muted);' : '') + '">' + initials(s.name) + '</div>' +
+        '<div class="student-info">' +
+          '<div class="student-name">' + esc(s.name) + (taken ? ' <span style="font-size:10px;color:var(--muted);font-weight:400;">&middot; already in a group</span>' : '') + '</div>' +
+          '<div class="student-email">' + esc(s.email) + '</div>' +
+        '</div>' +
+        (sel ? '<span class="check-icon">&#10003;</span>' : '') +
+        '</div>';
+    }).join('') || '<p style="font-size:13px;color:var(--muted);padding:8px 0;">No students found.</p>';
+
+    list.querySelectorAll('.student-row:not(.disabled)').forEach(function(row) {
+      row.addEventListener('click', function() { toggleStudent(parseInt(row.dataset.id)); });
+    });
+  }
+
+  function toggleStudent(id) {
+    if (selectedIds.includes(id)) {
+      selectedIds = selectedIds.filter(function(x) { return x !== id; });
+    } else if (selectedIds.length < 2) {
+      selectedIds.push(id);
+    }
+    renderChips();
+    renderStudentList();
+  }
+
+  function renderChips() {
+    const el = document.getElementById('selectedChips');
+    if (!el) return;
+    el.innerHTML = selectedIds.map(function(id) {
+      const s = allStudents.find(function(x) { return x.id === id; });
+      if (!s) return '';
+      return '<div class="chip">' + esc(s.name) + '<button data-id="' + id + '">&times;</button></div>';
+    }).join('');
+    el.querySelectorAll('button').forEach(function(btn) {
+      btn.addEventListener('click', function() { toggleStudent(parseInt(btn.dataset.id)); });
+    });
+  }
+
+  async function createGroup() {
+    const nameEl = document.getElementById('groupName');
+    const alertBox = document.getElementById('alertBox');
+    alertBox.className = 'alert alert-err';
+
+    const name = nameEl ? nameEl.value.trim() : '';
+    if (!name) {
+      alertBox.textContent = 'Please enter a group name.';
+      alertBox.classList.add('show');
+      return;
+    }
+
+    const btn = document.getElementById('createBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Creating...';
+
+    try {
+      await api('/api/groups', 'POST', {
+        name: name,
+        is_solo: mode === 'solo',
+        member_ids: mode === 'group' ? selectedIds : [],
+      });
+      location.reload();
+    } catch (ex) {
+      alertBox.textContent = ex.message || 'Failed to create group.';
+      alertBox.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = 'Create Group';
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>
