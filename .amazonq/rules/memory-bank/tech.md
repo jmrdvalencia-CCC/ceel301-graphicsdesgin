@@ -1,44 +1,53 @@
 # Technology Stack
 
 ## Languages
-- **HTML5** — all pages; semantic markup with `<!DOCTYPE html>` and `lang="en"`
-- **CSS3** — inline `<style>` blocks per page + shared `.css` files; uses custom properties, flexbox, grid, transitions
-- **Vanilla JavaScript (ES6+)** — inline `<script>` blocks + shared `.js` files; no transpilation
+- **HTML5** — all lesson pages, slide files, and activities
+- **CSS3** — inline `<style>` blocks per file; CSS custom properties for theming
+- **Vanilla JavaScript (ES6+)** — slide engines, theme toggle, interactive activities
 
-## Fonts
-- **Inter** (Google Fonts CDN) — weights 400, 600, 700, 800; loaded via `@import url(...)` in CSS
+## No Framework / No Build System
+This project uses zero dependencies, no package manager, and no bundler. Everything runs directly in the browser.
+
+## External Resources
+- **Google Fonts** — `Inter` (weights 400, 600, 700, 800) loaded via CDN `<link>` tag
+  ```html
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+  ```
 
 ## Deployment
-- **Cloudflare Workers** via [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
-  - `wrangler.toml`: `name = "graphicsdesign"`, `compatibility_date = "2024-01-01"`, assets from `./public`
-- **`.cfignore`** — controls which files are excluded from Cloudflare deployment
-
-## Build System
-- None — no npm, no bundler, no framework
-- Files are served as static assets directly
+- **Cloudflare Workers** (static assets mode)
+- Config: `wrangler.toml`
+  ```toml
+  name = "graphicsdesign"
+  compatibility_date = "2024-01-01"
+  [assets]
+  directory = "./public"
+  ```
+- Deploy command: `wrangler deploy` (Cloudflare Wrangler CLI required)
+- Ignore rules: `.cfignore`
 
 ## Development Commands
-```bash
-# Install Wrangler (one-time)
-npm install -g wrangler
-
-# Preview locally
-wrangler dev
-
-# Deploy to Cloudflare Workers
-wrangler deploy
-```
+| Task | Command |
+|---|---|
+| Local preview | Open any `.html` file directly in browser (no server needed) |
+| Deploy to Cloudflare | `wrangler deploy` |
+| Wrangler install | `npm install -g wrangler` |
 
 ## Browser APIs Used
-- `localStorage` — theme preference persistence
-- `Canvas API` — freehand drawing in LogoDesign sketching activity
-- `scrollIntoView` — smooth carousel navigation
-- `addEventListener` with `{ passive: true }` — scroll performance optimization
+- `localStorage` — theme preference persistence (`theme: 'light' | 'dark'`)
+- `document.documentElement.classList` — `html.light` class toggle for theming
+- `canvas` API — used in zoom/raster comparison activities
+- `addEventListener` — keyboard navigation in slide decks
 
-## Asset Types
-- `.html` — lesson pages and activities
-- `.css` — shared module stylesheets
-- `.js` — shared module scripts
-- `.png`, `.jpg`, `.jpeg`, `.webp`, `.svg` — reference images and activity assets
-- `.pdf` — course reference document (CEEL301-DCI.pdf)
-- `.md`, `.docx` — source course documentation in `/docs`
+## CSS Architecture
+- **CSS Custom Properties** (`:root` variables): `--bg`, `--surface`, `--border`, `--text`, `--muted`, `--label`, `--divider`, `--surface2`, `--accent`
+- **Dark mode default**, light mode via `html.light` class override
+- **`box-sizing: border-box`** reset applied globally via `* {}`
+- **Transitions** on `background`, `color`, `transform`, `border-color` for smooth theme/hover effects
+- **`--accent` per-component** — each lesson card sets its own accent color via inline `style="--accent:#hex"`
+
+## File Naming Conventions
+- Lesson parts: `part1.html`, `part1a-definition.html`, `part2-properties.html` (kebab-case with descriptive suffix)
+- Slide files: `slide-01.html` (zero-padded) or `slide1.html` (no padding, UIUX module)
+- Shared utilities: `shared.js`, `shared.css`
+- Slide data+engine: `slides.js`

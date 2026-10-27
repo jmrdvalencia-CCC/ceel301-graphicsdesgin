@@ -1,100 +1,99 @@
 # Project Structure
 
 ## Directory Layout
-
 ```
 ceel301-graphicsdesgin/
-├── index.html                        # Main landing page (lessons + activities hub)
+├── index.html                        # Main landing page — lesson & activity hub
 ├── wrangler.toml                     # Cloudflare Workers deployment config
-├── .cfignore                         # Cloudflare ignore rules
-├── activity3.html                    # "Guess the Fix!" activity
-├── zoom-acitivty.html                # "Find the Difference" activity
-├── image-zoom-comparison.html        # "Raster vs Vector Zoom" activity
-├── CEEL301-DCI.pdf                   # Course reference document
+├── .cfignore                         # Cloudflare deploy ignore rules
 │
-├── ColorTheory/                      # 7-part Color Theory lesson module
-│   ├── index.html                    # Module landing page
-│   ├── part1a-definition.html        # Foundations & Definition
-│   ├── part1a2-pillars.html          # Three pillars of color theory
-│   ├── part1b-history.html           # History of color theory
-│   ├── part1c-wheel-pillar.html      # Color wheel pillar
-│   ├── part1d-psychology-pillar.html # Psychology pillar
-│   ├── part1e-systems-pillar.html    # Systems pillar
-│   ├── part1-foundations.html        # Foundations overview
-│   ├── part2-properties.html         # Color wheel & properties
-│   ├── part2b-colorlab.html          # Interactive color lab
-│   ├── part2c-temperature.html       # Color temperature
-│   ├── part3-harmonies.html          # Harmonies & schemes
-│   ├── part4-ratio.html              # 60-30-10 rule
-│   ├── part5-psychology.html         # Psychology & culture
-│   ├── part6-systems.html            # Color systems overview
-│   ├── part6b-rgbcmyk.html           # RGB vs CMYK
-│   ├── part7-activity.html           # Activity & summary
-│   ├── cocology.html                 # Color personality test
-│   ├── Color-personality-test-ranks.html
-│   ├── Color-personality-test-scenario-based.html
-│   ├── shared.css                    # Module-scoped styles
-│   └── shared.js                     # Module navigation & progress logic
-│
-├── LogoDesign/                       # 5-part Logo Design lesson module
-│   ├── index.html
-│   ├── part1-intro.html
-│   ├── part2-sketching.html          # Includes canvas drawing activity
-│   ├── part3-digitizing.html
-│   ├── part4-scalability.html
-│   ├── part5-summary.html
-│   ├── shared.css                    # Module-scoped styles
-│   └── shared.js                     # Module navigation & progress logic
-│
-├── design-principles/                # 4-part Design Principles lesson module
+├── design-principles/                # Lesson: Design Principles & Elements (4 parts)
 │   ├── index.html
 │   ├── part1.html – part4.html
-│   └── icons/                        # Brand/logo reference images
-│       ├── designElement/
-│       └── designPrinciple/
+│   └── icons/                        # designElement/ and designPrinciple/ image assets
 │
-├── Hierarchy/                        # 4-part Visual Hierarchy lesson module
+├── Hierarchy/                        # Lesson: Visual Hierarchy (4 parts)
 │   ├── index.html
 │   ├── part1.html – part4.html
-│   └── assets/                       # Magazine/poster reference images
+│   └── assets/                       # Magazine, poster, website reference images
 │
-├── Photoshop/                        # Photoshop Essentials lesson module
-│   ├── index.html                    # Slide-based presentation
-│   └── assets/                       # Tool screenshots and sample images
+├── ColorTheory/                      # Lesson: Color Theory (7 parts + activities)
+│   ├── index.html
+│   ├── part1a-definition.html … part7-activity.html
+│   ├── cocology.html                 # Color personality test (image-based)
+│   ├── Color-personality-test-*.html # Scenario-based & ranked tests
+│   ├── shared.css                    # Module-scoped shared styles
+│   ├── shared.js                     # Module-scoped shared JS (slide engine)
+│   └── cocology-image/               # Test scenario images
 │
-├── Graphic-Design-for-Digital-Media/ # 20-slide Social Media & Banner Ads module
+├── LogoDesign/                       # Lesson: Logo Design Techniques (5 parts)
+│   ├── index.html
+│   ├── part1-intro.html … part5-summary.html
+│   ├── shared.css
+│   └── shared.js                     # Slide engine for this module
+│
+├── MotionGraphics/                   # Lesson: Motion Graphics (24 slides)
+│   ├── index.html
+│   └── slides.js                     # Full slide data + engine for this module
+│
+├── UIUX/                             # Lesson: UI/UX Web Graphics & Wireframing (14 slides)
+│   ├── index.html
+│   ├── slide1.html – slide14.html
+│   ├── slides.js                     # Slide data + engine
+│   ├── styles.css
+│   └── test.html
+│
+├── Typography/                       # Lesson: Typography Mastery (30 slides)
+│   ├── index.html
+│   └── slide-01.html – slide-30.html
+│
+├── Photography/                      # Lesson: Photography & Editing (30 slides)
+│   ├── index.html
+│   ├── slide-01.html – slide-30.html
+│   ├── shared.css
+│   └── image-prompts.md
+│
+├── Photoshop/                        # Lesson: Photoshop Essentials
+│   ├── index.html                    # JS-driven slide deck (inline)
+│   └── assets/                       # Tool screenshots and comparison images
+│
+├── Graphic-Design-for-Digital-Media/ # Lesson: Social Media Campaigns (20 slides)
 │   ├── index.html
 │   └── slide-01.html – slide-20.html
 │
-├── UIUX/                             # UI/UX Web Graphics & Wireframing module
-│   ├── index.html                    # Self-contained deck (styles + shell inline)
-│   └── slides.js                     # All 14 slides as JS strings + nav engine
+├── docs/                             # Source markdown documents (module content)
+│   └── Module - *.md                 # One .md per lesson topic
 │
-└── docs/                             # Source course documents (Markdown, DOCX, GDoc)
+├── activity3.html                    # Activity: Guess the Fix!
+├── zoom-acitivty.html                # Activity: Find the Difference
+├── image-zoom-comparison.html        # Activity: Raster vs Vector Zoom
+└── typography-presentation.html     # Standalone typography presentation
 ```
 
-## Core Components & Relationships
+## Core Components
 
-- **index.html** is the hub; all modules link from here via lesson cards and activity cards
-- **shared.js + shared.css** (in ColorTheory/ and LogoDesign/) provide reusable per-module navigation, progress bars, and slide transitions — each module has its own copy
-- **Lesson modules** follow a consistent multi-part HTML file pattern (`part1.html`, `part2.html`, …)
-- **Graphic-Design-for-Digital-Media** uses a numbered slide pattern (`slide-01.html` … `slide-20.html`)
-- **Activities** are standalone HTML files at the root level
+### Landing Page (`index.html`)
+- Fixed theme-toggle button (dark/light, persisted via localStorage)
+- `section-label` dividers separating Lessons and Activities
+- `.lesson-card` components: icon + title + description + `.parts-list` sub-navigation
+- `.act-card` components: standalone activity links
+- Per-card `--accent` CSS variable drives hover colors
+
+### Slide Engine Pattern
+Two variants exist across modules:
+
+1. **Shared JS file** (`shared.js` in ColorTheory, LogoDesign) — imported by individual HTML part files; provides slide navigation functions used across multiple pages.
+
+2. **Self-contained slides.js** (`MotionGraphics/slides.js`, `UIUX/slides.js`) — defines all slide content as a JS data array and renders the entire deck into a single `index.html` at runtime.
+
+### Per-slide HTML files (Typography, Photography, Graphic-Design-for-Digital-Media)
+- Each slide is a separate `.html` file with inline styles and prev/next navigation links
+- No shared JS dependency; navigation is pure HTML anchor links
 
 ## Architectural Patterns
-
 - **No build system** — pure HTML/CSS/JS, no bundler or framework
-- **CSS custom properties (variables)** for theming (`--bg`, `--surface`, `--accent`, etc.) defined on `:root` and overridden with `html.light`
-- **localStorage** for theme persistence across pages
-- **Inline `<style>` blocks** inside each HTML file for page-specific styles
-- **Shared module files** (`shared.js`, `shared.css`) imported via `<script src>` / `<link href>` for cross-page consistency within a module
-- **Cloudflare Workers** deployment via `wrangler.toml`
-
-## UIUX Module — Special Pattern
-
-The UIUX/ module uses a different pattern from all other modules — **no separate slide HTML files**:
-- `index.html` contains all CSS inline in a `<style>` block and the shell HTML
-- `slides.js` contains all 14 slides as **regular JS string concatenation** (NOT template literals) assigned to a `SLIDES[]` array, plus the full nav engine
-- `init()` is called at the end of `slides.js` after all slides are defined — no `DOMContentLoaded` needed because `<script src="slides.js">` is at the bottom of `<body>`
-- Slides show/hide via `display:none` / `display:flex` (CSS class `.active`) — no fetch, no transitions, no IIFE
-- **Critical:** Do NOT use backtick template literals for slide HTML strings — use single-quoted strings with `+` concatenation. Backticks caused silent failures in Chrome when opening via `file://`
+- **CSS Custom Properties** for theming (`--bg`, `--surface`, `--text`, `--accent`, etc.)
+- **`html.light` class toggle** on `<html>` element for dark/light mode switching
+- **Inter font** via Google Fonts CDN used consistently across modules
+- **Inline `<style>` blocks** — styles are embedded per-file rather than in external sheets (except `shared.css` files)
+- **Cloudflare Workers** static hosting via `wrangler.toml`

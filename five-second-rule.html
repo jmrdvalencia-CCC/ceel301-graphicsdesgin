@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>5-Second Rule – Graphics Design</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0a0a14;--surface:#1f2937;--border:#374151;
+  --text:#f9fafb;--muted:#9ca3af;--label:#4b5563;
+  --divider:#1f2937;--surface2:#111827;
+  --accent:#ff4d00;--accent-soft:rgba(255,77,0,.15);
+}
+html.light{
+  --bg:#f3f4f6;--surface:#ffffff;--border:#e5e7eb;
+  --text:#111827;--muted:#6b7280;--label:#9ca3af;
+  --divider:#e5e7eb;--surface2:#f9fafb;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s;}
+
+/* ── theme toggle ── */
+.theme-btn{position:fixed;top:16px;right:20px;z-index:200;background:var(--surface);border:1px solid var(--border);color:var(--text);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.theme-btn:hover{transform:scale(1.1);}
+
+/* ── screens ── */
+.screen{display:none;min-height:100vh;padding:24px 16px;flex-direction:column;align-items:center;justify-content:center;}
+.screen.active{display:flex;}
+
+/* ── card ── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 32px;width:100%;max-width:480px;display:flex;flex-direction:column;gap:20px;}
+.card-wide{max-width:720px;}
+
+/* ── typography ── */
+.eyebrow{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);}
+h1{font-size:2rem;font-weight:800;line-height:1.15;}
+h2{font-size:1.3rem;font-weight:700;}
+h3{font-size:1rem;font-weight:700;}
+.muted{color:var(--muted);font-size:.85rem;line-height:1.6;}
+
+/* ── inputs ── */
+input[type=text]{width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-family:'Inter',sans-serif;font-size:1rem;outline:none;transition:border-color .2s;}
+input[type=text]:focus{border-color:var(--accent);}
+input[type=text]::placeholder{color:var(--muted);}
+
+/* ── buttons ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;padding:13px 28px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px);}
+.btn-primary:disabled{opacity:.35;cursor:default;transform:none;}
+.btn-ghost{background:transparent;border:1.5px solid var(--border);color:var(--text);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.btn-danger{background:#ef4444;color:#fff;}
+.btn-danger:hover{opacity:.88;}
+.btn-full{width:100%;}
+.btn-sm{padding:8px 18px;font-size:.82rem;border-radius:8px;}
+
+/* ── divider ── */
+.h-rule{height:1px;background:var(--border);width:100%;}
+
+/* ── player chips ── */
+.player-list{display:flex;flex-wrap:wrap;gap:8px;}
+.player-chip{background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;font-weight:600;display:flex;align-items:center;gap:6px;}
+.player-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);}
+.player-chip.host .dot{background:#facc15;}
+.player-chip.host::after{content:'HOST';font-size:.55rem;letter-spacing:1.5px;color:#facc15;margin-left:2px;}
+
+/* ── timer ring ── */
+.timer-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.timer-ring{position:relative;width:100px;height:100px;}
+.timer-ring svg{transform:rotate(-90deg);}
+.timer-ring circle{fill:none;stroke-width:8;}
+.ring-bg{stroke:var(--border);}
+.ring-fg{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .9s linear,stroke .5s;}
+.timer-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;color:var(--accent);}
+
+/* ── category badge ── */
+.cat-badge{background:var(--accent-soft);border:1.5px solid var(--accent);border-radius:12px;padding:14px 20px;text-align:center;}
+.cat-badge .cat-label{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+.cat-badge .cat-text{font-size:1.4rem;font-weight:800;}
+
+/* ── word input row ── */
+.word-row{display:flex;gap:10px;}
+.word-row input{flex:1;}
+
+/* ── submitted words display ── */
+.submitted-tag{display:inline-block;background:var(--accent-soft);border:1px solid var(--accent);border-radius:8px;padding:6px 14px;font-size:.9rem;font-weight:700;color:var(--accent);margin-top:8px;}
+
+/* ── results table ── */
+.results-list{display:flex;flex-direction:column;gap:10px;}
+.result-row{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.result-row.unique{border-color:#22c55e;}
+.result-row.dupe{border-color:#ef4444;opacity:.7;}
+.result-player{font-weight:700;font-size:.9rem;}
+.result-word{font-size:.85rem;color:var(--muted);}
+.result-badge{font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:100px;}
+.badge-unique{background:rgba(34,197,94,.15);color:#22c55e;}
+.badge-dupe{background:rgba(239,68,68,.15);color:#ef4444;}
+.badge-empty{background:var(--surface);color:var(--muted);}
+
+/* ── scoreboard ── */
+.score-list{display:flex;flex-direction:column;gap:10px;}
+.score-row{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
+.score-row.leader{border-color:#facc15;background:rgba(250,204,21,.07);}
+.score-name{font-weight:700;}
+.score-pts{font-size:1.1rem;font-weight:800;color:var(--accent);}
+.score-row.leader .score-pts{color:#facc15;}
+.score-row.leader .score-name::before{content:'👑 ';}
+
+/* ── winner banner ── */
+.winner-banner{background:linear-gradient(135deg,rgba(255,77,0,.2),rgba(250,204,21,.15));border:1.5px solid #facc15;border-radius:16px;padding:24px;text-align:center;}
+.winner-banner .trophy{font-size:3rem;margin-bottom:8px;}
+.winner-banner h2{font-size:1.5rem;}
+.winner-banner .winner-name{font-size:2rem;font-weight:800;color:#facc15;margin-top:4px;}
+
+/* ── round indicator ── */
+.round-pill{background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:5px 16px;font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+
+/* ── waiting dots ── */
+.waiting-dots span{animation:blink 1.2s infinite;}
+.waiting-dots span:nth-child(2){animation-delay:.2s;}
+.waiting-dots span:nth-child(3){animation-delay:.4s;}
+@keyframes blink{0%,80%,100%{opacity:.2;}40%{opacity:1;}}
+
+/* ── host controls ── */
+.host-panel{background:rgba(250,204,21,.07);border:1.5px solid rgba(250,204,21,.3);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:12px;}
+.host-label{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#facc15;}
+
+/* ── progress dots ── */
+.progress-dots{display:flex;gap:6px;justify-content:center;}
+.pdot{width:10px;height:10px;border-radius:50%;background:var(--border);transition:background .3s;}
+.pdot.earned{background:#22c55e;}
+.pdot.needed{background:var(--border);}
+
+/* ── tag ── */
+.tag{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);}
+
+/* ── flex helpers ── */
+.row{display:flex;gap:10px;align-items:center;}
+.col{display:flex;flex-direction:column;gap:8px;}
+.between{justify-content:space-between;}
+.center{justify-content:center;text-align:center;}
+.flex1{flex:1;}
+</style>
+</head>
+<body>
+
+<button class="theme-btn" id="themeBtn">🌙</button>
+
+<!-- ══════════════ SCREEN: LOBBY ══════════════ -->
+<div class="screen active" id="s-lobby">
+  <div class="card">
+    <div class="col center">
+      <div class="eyebrow">Graphics Design · Party Game</div>
+      <h1>⏱ 5-Second Rule</h1>
+      <p class="muted">Name 3 things in the category — before time runs out. Only <em>unique</em> answers score!</p>
+    </div>
+    <div class="h-rule"></div>
+    <div class="col">
+      <label class="tag" for="codeInput">Your Codename</label>
+      <input type="text" id="codeInput" placeholder="e.g. PixelWizard" maxlength="20"/>
+    </div>
+    <div class="col">
+      <label class="tag" for="roomInput">Room Code</label>
+      <input type="text" id="roomInput" placeholder="e.g. DESIGN01" maxlength="12" style="text-transform:uppercase;"/>
+      <p class="muted" style="font-size:.75rem;">First player to join a room becomes the Host (Pitcher).</p>
+    </div>
+    <button class="btn btn-primary btn-full" id="joinBtn" onclick="joinRoom()">Enter Room →</button>
+    <p class="muted center" style="font-size:.75rem;">Share the same Room Code with all players on their own devices.</p>
+  </div>
+</div>
+
+<!-- ══════════════ SCREEN: WAITING ROOM ══════════════ -->
+<div class="screen" id="s-waiting">
+  <div class="card card-wide">
+    <div class="row between">
+      <div class="col" style="gap:4px;">
+        <div class="eyebrow">Waiting Room</div>
+        <h2 id="w-roomCode">Room: —</h2>
+      </div>
+      <div class="round-pill" id="w-roundPill">Round 1</div>
+    </div>
+    <div class="h-rule"></div>
+    <div class="col" style="gap:6px;">
+      <div class="tag">Players in Room</div>
+      <div class="player-list" id="w-playerList"></div>
+    </div>
+    <div class="h-rule"></div>
+    <!-- HOST PANEL -->
+    <div class="host-panel" id="w-hostPanel" style="display:none;">
+      <div class="host-label">⭐ Host Controls</div>
+      <div class="col" style="gap:6px;">
+        <label class="tag" for="catInput">Set Category for this Round</label>
+        <input type="text" id="catInput" placeholder="e.g. Things that are red" maxlength="60"/>
+      </div>
+      <button class="btn btn-primary" id="startBtn" onclick="hostStartRound()">▶ Start Round</button>
+    </div>
+    <!-- PLAYER WAIT -->
+    <div id="w-playerWait" class="col center" style="gap:6px;">
+      <p class="muted">Waiting for the Host to start<span class="waiting-dots"><span>.</span><span>.</span><span>.</span></span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ SCREEN: PLAYING ══════════════ -->
+<div class="screen" id="s-play">
+  <div class="card card-wide">
+    <div class="row between">
+      <div class="round-pill" id="p-roundPill">Round 1</div>
+      <div class="tag" id="p-myName"></div>
+    </div>
+    <div class="cat-badge">
+      <div class="cat-label">Category</div>
+      <div class="cat-text" id="p-category">—</div>
+    </div>
+    <div class="timer-wrap">
+      <div class="timer-ring">
+        <svg width="100" height="100" viewBox="0 0 100 100">
+          <circle class="ring-bg" cx="50" cy="50" r="42"/>
+          <circle class="ring-fg" id="timerCircle" cx="50" cy="50" r="42"
+            stroke-dasharray="263.9" stroke-dashoffset="0"/>
+        </svg>
+        <div class="timer-num" id="timerNum">5</div>
+      </div>
+      <p class="muted" style="font-size:.8rem;">seconds remaining</p>
+    </div>
+    <div class="col" id="p-inputArea">
+      <label class="tag">Your Answer</label>
+      <div class="word-row">
+        <input type="text" id="wordInput" placeholder="Type a word and press Enter…" maxlength="40" onkeydown="handleWordKey(event)"/>
+        <button class="btn btn-primary" onclick="submitWord()">Submit</button>
+      </div>
+      <div id="p-submittedWrap" style="display:none;">
+        <span class="submitted-tag" id="p-submittedWord"></span>
+        <p class="muted" style="font-size:.78rem;margin-top:6px;">Answer locked in! Waiting for round to end…</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ SCREEN: ROUND RESULTS ══════════════ -->
+<div class="screen" id="s-results">
+  <div class="card card-wide">
+    <div class="row between">
+      <div class="col" style="gap:4px;">
+        <div class="eyebrow">Round Results</div>
+        <h2 id="r-roundTitle">Round 1</h2>
+      </div>
+      <div class="cat-badge" style="padding:10px 16px;">
+        <div class="cat-label">Category</div>
+        <div class="cat-text" id="r-category" style="font-size:1rem;">—</div>
+      </div>
+    </div>
+    <div class="h-rule"></div>
+    <div class="col" style="gap:6px;">
+      <div class="tag">Submissions</div>
+      <div class="results-list" id="r-list"></div>
+    </div>
+    <div class="h-rule"></div>
+    <div class="col" style="gap:6px;">
+      <div class="tag">Scoreboard</div>
+      <div class="score-list" id="r-scores"></div>
+    </div>
+    <div class="h-rule"></div>
+    <!-- HOST: next round or end -->
+    <div class="host-panel" id="r-hostPanel" style="display:none;">
+      <div class="host-label">⭐ Host Controls</div>
+      <div class="row" style="gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-primary flex1" onclick="hostNextRound()">Next Round →</button>
+        <button class="btn btn-danger flex1" onclick="hostEndGame()">End Game</button>
+      </div>
+    </div>
+    <div id="r-playerWait" class="muted center" style="font-size:.85rem;">Waiting for Host to continue<span class="waiting-dots"><span>.</span><span>.</span><span>.</span></span></div>
+  </div>
+</div>
+
+<!-- ══════════════ SCREEN: FINAL ══════════════ -->
+<div class="screen" id="s-final">
+  <div class="card card-wide">
+    <div class="eyebrow center">Game Over</div>
+    <div class="winner-banner" id="f-banner">
+      <div class="trophy">🏆</div>
+      <h2>Winner</h2>
+      <div class="winner-name" id="f-winner">—</div>
+    </div>
+    <div class="col" style="gap:6px;">
+      <div class="tag">Final Scores</div>
+      <div class="score-list" id="f-scores"></div>
+    </div>
+    <div class="h-rule"></div>
+    <div class="host-panel" id="f-hostPanel" style="display:none;">
+      <div class="host-label">⭐ Host Controls</div>
+      <button class="btn btn-primary btn-full" onclick="hostReset()">🔄 New Game (Reset Room)</button>
+    </div>
+    <div id="f-playerWait" class="muted center" style="font-size:.85rem;">Waiting for Host to reset<span class="waiting-dots"><span>.</span><span>.</span><span>.</span></span></div>
+  </div>
+</div>
+
+<script>
+/* ── Theme ── */
+const html = document.documentElement;
+const themeBtn = document.getElementById('themeBtn');
+if (localStorage.getItem('theme') === 'light') { html.classList.add('light'); themeBtn.textContent = '☀️'; }
+themeBtn.addEventListener('click', () => {
+  const isLight = html.classList.toggle('light');
+  themeBtn.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+/* ══════════════════════════════════════════
+   STATE — stored in localStorage under key
+   "5sr_<roomCode>" so all tabs on same device
+   share the same room object.
+   ══════════════════════════════════════════ */
+const POINTS_TO_WIN = 3;
+const ROUND_SECONDS = 5;
+let myName = '';
+let myRoom = '';
+let isHost = false;
+let timerInterval = null;
+let pollInterval  = null;
+let timeLeft = ROUND_SECONDS;
+
+/* ── helpers ── */
+function roomKey(code) { return '5sr_' + code.toUpperCase(); }
+
+function getRoom(code) {
+  const raw = localStorage.getItem(roomKey(code));
+  return raw ? JSON.parse(raw) : null;
+}
+
+function saveRoom(code, data) {
+  localStorage.setItem(roomKey(code), JSON.stringify(data));
+}
+
+function freshRoom(hostName) {
+  return {
+    host: hostName,
+    players: [hostName],
+    scores: { [hostName]: 0 },
+    phase: 'waiting',   /* waiting | playing | results | final */
+    round: 1,
+    category: '',
+    submissions: {},    /* { playerName: word } */
+    startedAt: null,
+  };
+}
+
+/* ── screen switcher ── */
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+/* ══════════════════════════════════════════
+   LOBBY
+   ══════════════════════════════════════════ */
+function joinRoom() {
+  const nameVal = document.getElementById('codeInput').value.trim();
+  const roomVal = document.getElementById('roomInput').value.trim().toUpperCase();
+  if (!nameVal) { alert('Enter a codename!'); return; }
+  if (!roomVal) { alert('Enter a room code!'); return; }
+
+  myName = nameVal;
+  myRoom = roomVal;
+
+  let room = getRoom(roomVal);
+  if (!room) {
+    /* first player — becomes host */
+    room = freshRoom(myName);
+    isHost = true;
+  } else {
+    if (room.phase !== 'waiting') { alert('Game already in progress. Wait for the next round or a reset.'); return; }
+    if (room.players.includes(myName)) { alert('That codename is taken in this room!'); return; }
+    room.players.push(myName);
+    room.scores[myName] = 0;
+    isHost = (room.host === myName);
+  }
+  saveRoom(myRoom, room);
+  enterWaiting();
+}
+
+/* ══════════════════════════════════════════
+   WAITING ROOM
+   ══════════════════════════════════════════ */
+function enterWaiting() {
+  show('s-waiting');
+  document.getElementById('w-roomCode').textContent = 'Room: ' + myRoom;
+  renderWaiting();
+  clearInterval(pollInterval);
+  pollInterval = setInterval(pollWaiting, 800);
+}
+
+function renderWaiting() {
+  const room = getRoom(myRoom);
+  if (!room) return;
+  document.getElementById('w-roundPill').textContent = 'Round ' + room.round;
+  /* player chips */
+  const list = document.getElementById('w-playerList');
+  list.innerHTML = room.players.map(p =>
+    `<div class="player-chip ${p === room.host ? 'host' : ''}"><span class="dot"></span>${p}</div>`
+  ).join('');
+  /* host vs player panel */
+  document.getElementById('w-hostPanel').style.display  = isHost ? 'flex' : 'none';
+  document.getElementById('w-playerWait').style.display = isHost ? 'none' : 'flex';
+}
+
+function pollWaiting() {
+  const room = getRoom(myRoom);
+  if (!room) return;
+  renderWaiting();
+  if (room.phase === 'playing') {
+    clearInterval(pollInterval);
+    enterPlay(room);
+  }
+}
+
+/* ══════════════════════════════════════════
+   HOST: START ROUND
+   ══════════════════════════════════════════ */
+function hostStartRound() {
+  const cat = document.getElementById('catInput').value.trim();
+  if (!cat) { alert('Enter a category first!'); return; }
+  const room = getRoom(myRoom);
+  room.category   = cat;
+  room.phase      = 'playing';
+  room.submissions = {};
+  room.startedAt  = Date.now();
+  saveRoom(myRoom, room);
+  clearInterval(pollInterval);
+  enterPlay(room);
+}
+
+/* ══════════════════════════════════════════
+   PLAY SCREEN
+   ══════════════════════════════════════════ */
+function enterPlay(room) {
+  show('s-play');
+  document.getElementById('p-roundPill').textContent = 'Round ' + room.round;
+  document.getElementById('p-myName').textContent    = myName;
+  document.getElementById('p-category').textContent  = room.category;
+  document.getElementById('p-inputArea').style.display = 'flex';
+  document.getElementById('p-submittedWrap').style.display = 'none';
+  document.getElementById('wordInput').value = '';
+  document.getElementById('wordInput').disabled = false;
+
+  /* calculate remaining time from startedAt */
+  const elapsed = Math.floor((Date.now() - room.startedAt) / 1000);
+  timeLeft = Math.max(0, ROUND_SECONDS - elapsed);
+
+  updateTimerDisplay(timeLeft);
+  clearInterval(timerInterval);
+  timerInterval = setInterval(tickTimer, 1000);
+}
+
+function tickTimer() {
+  timeLeft--;
+  updateTimerDisplay(timeLeft);
+  if (timeLeft <= 0) {
+    clearInterval(timerInterval);
+    lockInput();
+    /* host triggers results after a short delay */
+    if (isHost) {
+      setTimeout(hostShowResults, 800);
+    } else {
+      /* non-host polls for results phase */
+      pollInterval = setInterval(pollForResults, 800);
+    }
+  }
+}
+
+function updateTimerDisplay(t) {
+  document.getElementById('timerNum').textContent = Math.max(0, t);
+  const circ = document.getElementById('timerCircle');
+  const total = 263.9;
+  const offset = total - (t / ROUND_SECONDS) * total;
+  circ.style.strokeDashoffset = offset;
+  /* colour shift: green → orange → red */
+  const pct = t / ROUND_SECONDS;
+  circ.style.stroke = pct > .5 ? '#22c55e' : pct > .25 ? '#f59e0b' : '#ef4444';
+  document.getElementById('timerNum').style.color = circ.style.stroke;
+}
+
+function lockInput() {
+  document.getElementById('wordInput').disabled = true;
+}
+
+function handleWordKey(e) {
+  if (e.key === 'Enter') submitWord();
+}
+
+function submitWord() {
+  const val = document.getElementById('wordInput').value.trim();
+  if (!val || timeLeft <= 0) return;
+  const room = getRoom(myRoom);
+  if (!room || room.phase !== 'playing') return;
+  if (room.submissions[myName]) return; /* already submitted */
+  room.submissions[myName] = val.toLowerCase();
+  saveRoom(myRoom, room);
+  /* show locked state */
+  document.getElementById('wordInput').disabled = true;
+  document.getElementById('p-submittedWrap').style.display = 'block';
+  document.getElementById('p-submittedWord').textContent   = val;
+  document.getElementById('p-inputArea').querySelector('button').disabled = true;
+}
+
+function pollForResults() {
+  const room = getRoom(myRoom);
+  if (!room) return;
+  if (room.phase === 'results') {
+    clearInterval(pollInterval);
+    enterResults(room);
+  }
+  if (room.phase === 'final') {
+    clearInterval(pollInterval);
+    enterFinal(room);
+  }
+}
+
+/* ══════════════════════════════════════════
+   HOST: SHOW RESULTS
+   ══════════════════════════════════════════ */
+function hostShowResults() {
+  const room = getRoom(myRoom);
+  /* tally unique words */
+  const subs = room.submissions;
+  const wordCount = {};
+  Object.values(subs).forEach(w => { wordCount[w] = (wordCount[w] || 0) + 1; });
+  /* award points */
+  Object.entries(subs).forEach(([player, word]) => {
+    if (wordCount[word] === 1) {
+      room.scores[player] = (room.scores[player] || 0) + 1;
+    }
+  });
+  room.phase = 'results';
+  saveRoom(myRoom, room);
+  enterResults(room);
+}
+
+/* ══════════════════════════════════════════
+   RESULTS SCREEN
+   ══════════════════════════════════════════ */
+function enterResults(room) {
+  clearInterval(timerInterval);
+  clearInterval(pollInterval);
+  show('s-results');
+  document.getElementById('r-roundTitle').textContent = 'Round ' + room.round;
+  document.getElementById('r-category').textContent   = room.category;
+
+  /* submissions list */
+  const subs = room.submissions;
+  const wordCount = {};
+  Object.values(subs).forEach(w => { wordCount[w] = (wordCount[w] || 0) + 1; });
+
+  const list = document.getElementById('r-list');
+  if (Object.keys(subs).length === 0) {
+    list.innerHTML = '<p class="muted">No one submitted an answer.</p>';
+  } else {
+    list.innerHTML = room.players.map(p => {
+      const word = subs[p];
+      if (!word) {
+        return `<div class="result-row">
+          <span class="result-player">${p}</span>
+          <span class="result-word">—</span>
+          <span class="result-badge badge-empty">No answer</span>
+        </div>`;
+      }
+      const isUnique = wordCount[word] === 1;
+      return `<div class="result-row ${isUnique ? 'unique' : 'dupe'}">
+        <span class="result-player">${p}</span>
+        <span class="result-word">"${word}"</span>
+        <span class="result-badge ${isUnique ? 'badge-unique' : 'badge-dupe'}">${isUnique ? '+1 Point' : 'Duplicate'}</span>
+      </div>`;
+    }).join('');
+  }
+
+  /* scoreboard */
+  renderScores('r-scores', room);
+
+  /* host vs player */
+  document.getElementById('r-hostPanel').style.display  = isHost ? 'flex' : 'none';
+  document.getElementById('r-playerWait').style.display = isHost ? 'none' : 'block';
+
+  if (!isHost) {
+    pollInterval = setInterval(() => {
+      const r = getRoom(myRoom);
+      if (!r) return;
+      if (r.phase === 'waiting') { clearInterval(pollInterval); enterWaiting(); }
+      if (r.phase === 'final')   { clearInterval(pollInterval); enterFinal(r); }
+    }, 800);
+  }
+}
+
+/* ══════════════════════════════════════════
+   HOST: NEXT ROUND
+   ══════════════════════════════════════════ */
+function hostNextRound() {
+  const room = getRoom(myRoom);
+  /* check if anyone has won */
+  const winner = Object.entries(room.scores).find(([, pts]) => pts >= POINTS_TO_WIN);
+  if (winner) { hostEndGame(); return; }
+  room.round++;
+  room.phase = 'waiting';
+  room.category = '';
+  room.submissions = {};
+  room.startedAt = null;
+  saveRoom(myRoom, room);
+  document.getElementById('catInput').value = '';
+  enterWaiting();
+}
+
+/* ══════════════════════════════════════════
+   HOST: END GAME
+   ══════════════════════════════════════════ */
+function hostEndGame() {
+  const room = getRoom(myRoom);
+  room.phase = 'final';
+  saveRoom(myRoom, room);
+  enterFinal(room);
+}
+
+/* ══════════════════════════════════════════
+   FINAL SCREEN
+   ══════════════════════════════════════════ */
+function enterFinal(room) {
+  clearInterval(timerInterval);
+  clearInterval(pollInterval);
+  show('s-final');
+
+  /* find winner(s) */
+  const maxPts = Math.max(...Object.values(room.scores));
+  const winners = Object.entries(room.scores).filter(([, pts]) => pts === maxPts).map(([p]) => p);
+  document.getElementById('f-winner').textContent = winners.join(' & ');
+
+  renderScores('f-scores', room);
+
+  document.getElementById('f-hostPanel').style.display  = isHost ? 'flex' : 'none';
+  document.getElementById('f-playerWait').style.display = isHost ? 'none' : 'block';
+
+  if (!isHost) {
+    pollInterval = setInterval(() => {
+      const r = getRoom(myRoom);
+      if (!r || r.phase === 'waiting') {
+        clearInterval(pollInterval);
+        /* re-join fresh room */
+        const fresh = getRoom(myRoom);
+        if (fresh) { enterWaiting(); }
+        else { show('s-lobby'); }
+      }
+    }, 800);
+  }
+}
+
+/* ══════════════════════════════════════════
+   HOST: RESET
+   ══════════════════════════════════════════ */
+function hostReset() {
+  const room = freshRoom(myName);
+  /* keep all players */
+  const old = getRoom(myRoom);
+  if (old) {
+    old.players.forEach(p => {
+      if (!room.players.includes(p)) room.players.push(p);
+      room.scores[p] = 0;
+    });
+  }
+  saveRoom(myRoom, room);
+  document.getElementById('catInput') && (document.getElementById('catInput').value = '');
+  enterWaiting();
+}
+
+/* ══════════════════════════════════════════
+   SHARED: render scoreboard
+   ══════════════════════════════════════════ */
+function renderScores(elId, room) {
+  const sorted = Object.entries(room.scores).sort((a, b) => b[1] - a[1]);
+  const maxPts = sorted[0] ? sorted[0][1] : 0;
+  document.getElementById(elId).innerHTML = sorted.map(([p, pts]) => {
+    const isLeader = pts === maxPts && pts > 0;
+    const dots = Array.from({length: POINTS_TO_WIN}, (_, i) =>
+      `<div class="pdot ${i < pts ? 'earned' : 'needed'}"></div>`
+    ).join('');
+    return `<div class="score-row ${isLeader ? 'leader' : ''}">
+      <span class="score-name">${p}</span>
+      <div class="row" style="gap:12px;align-items:center;">
+        <div class="progress-dots">${dots}</div>
+        <span class="score-pts">${pts} pt${pts !== 1 ? 's' : ''}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+</script>
+</body>
+</html>
