@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 30 / 36 — Assessment Questions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:83%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">30 / 36</div>
+<section class="slide bg-cyan">
+  <div class="eyebrow"><span class="ln"></span>Part 6 — Assessment</div>
+  <div class="ttl" style="text-align:center;margin-bottom:6px">Assessment <span class="acc">Questions</span></div>
+  <div style="font-size:.75rem;color:rgba(255,255,255,.45);text-align:center;margin-bottom:16px;font-family:var(--mono)">Short Answer · Individual · 10 minutes</div>
+  <div class="ladder" style="max-width:780px">
+    <div class="rung"><span class="rn">Q1</span><div class="rt"><div class="rtitle">Define infographic in your own words.</div><div class="rdesc">How does it differ from a plain data visualization?</div></div></div>
+    <div class="rung lime"><span class="rn lime">Q2</span><div class="rt"><div class="rtitle">Chart type selection</div><div class="rdesc">A researcher has data showing the percentage of students who prefer each of five study methods. Which chart type would you recommend and why? Which would be inappropriate?</div></div></div>
+    <div class="rung coral"><span class="rn coral">Q3</span><div class="rt"><div class="rtitle">The 4 principles of data visualization</div><div class="rdesc">Explain each principle. Give one example of how violating each would mislead the audience.</div></div></div>
+    <div class="rung violet"><span class="rn violet">Q4</span><div class="rt"><div class="rtitle">Icon systems</div><div class="rdesc">What is an icon system? List four visual properties that must be consistent across all icons in a set.</div></div></div>
+    <div class="rung amber"><span class="rn amber">Q5</span><div class="rt"><div class="rtitle">Design an infographic about climate change</div><div class="rdesc">Describe your process: headline message, infographic type, color palette, and icon choices.</div></div></div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-29.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-31.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot active" onclick="location='slide-30.html'"></button><button class="dot" onclick="location='slide-31.html'"></button><button class="dot" onclick="location='slide-32.html'"></button><button class="dot" onclick="location='slide-33.html'"></button><button class="dot" onclick="location='slide-34.html'"></button><button class="dot" onclick="location='slide-35.html'"></button><button class="dot" onclick="location='slide-36.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-31.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-29.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-31.html':'slide-29.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Infographics',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

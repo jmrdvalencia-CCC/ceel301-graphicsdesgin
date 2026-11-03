@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 9 / 31 — Geographic Infographics</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:29%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">9 / 32</div>
+<section class="slide bg-violet">
+  <div class="eyebrow"><span class="ln"></span>Part 1 — Types · 05 of 06</div>
+  <div class="ttl" style="text-align:center;margin-bottom:18px"><span class="acc">Geographic</span> Infographics</div>
+  <div class="two-col" style="max-width:900px;gap:28px;align-items:center">
+    <div style="border-radius:16px;overflow:hidden;border:2px solid rgba(245,166,35,.25);box-shadow:0 0 40px rgba(245,166,35,.08)">
+      <img src="src/typeofInfographics/Geographic.png" alt="Geographic Infographic example" style="width:100%;display:block;max-height:420px;object-fit:contain;background:#0d1117">
+    </div>
+    <div>
+      <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:rgba(245,166,35,.6);margin-bottom:10px">TYPE 05</div>
+      <div style="font-family:var(--serif);font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:12px">Geographic</div>
+      <div style="font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:16px">Uses <strong style="color:var(--amber)">maps and spatial layouts</strong> to show location-based data. Color intensity, bubble size, or icons encode the data values across regions.</div>
+      <div class="label amber" style="margin-bottom:8px">Best used for</div>
+      <ul style="list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:6px">
+        <li style="font-size:.72rem;color:rgba(255,255,255,.6);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--amber);margin-top:2px">▸</span>Regional comparisons and rankings</li>
+        <li style="font-size:.72rem;color:rgba(255,255,255,.6);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--amber);margin-top:2px">▸</span>Population and demographic data</li>
+        <li style="font-size:.72rem;color:rgba(255,255,255,.6);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--amber);margin-top:2px">▸</span>Sales territory and market coverage</li>
+        <li style="font-size:.72rem;color:rgba(255,255,255,.6);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--amber);margin-top:2px">▸</span>Environmental and climate data</li>
+      </ul>
+      <div class="kbox">💡 Choropleth maps use color; bubble maps use size — choose based on your data type</div>
+    </div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-08.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-10.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot active" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot" onclick="location='slide-30.html'"></button><button class="dot" onclick="location='slide-31.html'"></button><button class="dot" onclick="location='slide-32.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-10.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-08.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-10.html':'slide-08.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Infographics',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 2 / 31 — Learning Objectives</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:8%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">2 / 32</div>
+<section class="slide bg-cyan">
+  <div class="eyebrow"><span class="ln"></span>Learning Objectives<span class="ln"></span></div>
+  <div class="ttl" style="text-align:center;margin-bottom:18px">By the end of this module, <span class="acc">you will be able to:</span></div>
+  <div class="ladder" style="max-width:780px">
+    <div class="rung"><span class="rn">01</span><div class="rt"><div class="rtitle">Define infographics</div><div class="rdesc">Explain how visual communication principles apply to data presentation</div></div></div>
+    <div class="rung lime"><span class="rn lime">02</span><div class="rt"><div class="rtitle">Identify the 6 types of infographics</div><div class="rdesc">Select the appropriate type for a given dataset or message</div></div></div>
+    <div class="rung coral"><span class="rn coral">03</span><div class="rt"><div class="rtitle">Apply design elements to data</div><div class="rdesc">Use line, shape, color, and typography to structure and communicate data clearly</div></div></div>
+    <div class="rung violet"><span class="rn violet">04</span><div class="rt"><div class="rtitle">Explain data visualization principles</div><div class="rdesc">Accuracy, hierarchy, simplicity, and context</div></div></div>
+    <div class="rung amber"><span class="rn amber">05</span><div class="rt"><div class="rtitle">Design a basic icon</div><div class="rdesc">Use geometric construction and a consistent visual style</div></div></div>
+    <div class="rung"><span class="rn">06</span><div class="rt"><div class="rtitle">Build an icon system</div><div class="rdesc">Apply consistent stroke weight, grid, and style across a set of related icons</div></div></div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-01.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-03.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot active" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot" onclick="location='slide-30.html'"></button><button class="dot" onclick="location='slide-31.html'"></button><button class="dot" onclick="location='slide-32.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-03.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-01.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-03.html':'slide-01.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Infographics',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

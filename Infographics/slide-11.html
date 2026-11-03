@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 11 / 32 — Infographics vs Data Visualization</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+#pbar{width:34%}
+/* ── challenge layout ── */
+.challenge-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:780px}
+.challenge-header{text-align:center}
+/* carousel viewport */
+.car-viewport{position:relative;width:100%;max-width:560px;border-radius:14px;overflow:hidden;background:#0a0a14;aspect-ratio:4/3;border:2px solid rgba(255,255,255,.08)}
+/* strip holds all images side by side */
+.car-strip{display:flex;height:100%;transition:transform .45s cubic-bezier(.77,0,.18,1)}
+.car-strip img{flex:0 0 100%;width:100%;height:100%;object-fit:contain;display:block}
+/* flash overlay on answer */
+.car-flash{position:absolute;inset:0;border-radius:12px;opacity:0;pointer-events:none;transition:opacity .15s}
+.car-flash.correct{background:rgba(126,203,53,.25)}
+.car-flash.wrong{background:rgba(255,107,107,.25)}
+.car-flash.pop{opacity:1}
+/* badge overlay */
+.car-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.6);opacity:0;font-size:3rem;pointer-events:none;transition:opacity .2s,transform .2s}
+.car-badge.pop{opacity:1;transform:translate(-50%,-50%) scale(1)}
+/* counter pill */
+.car-num{position:absolute;top:10px;left:12px;font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.4);background:rgba(0,0,0,.5);padding:2px 7px;border-radius:20px;z-index:3}
+/* nav arrows */
+.car-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:4}
+.car-arrow:hover{background:rgba(0,194,224,.4)}
+.car-arrow.left{left:-16px}
+.car-arrow.right{right:-16px}
+.car-arrow:disabled{opacity:.2;cursor:default}
+/* answer buttons */
+.ans-row{display:flex;gap:12px;justify-content:center}
+.ans-btn{flex:1;max-width:200px;padding:11px 0;border-radius:10px;border:2px solid transparent;font-family:var(--sans);font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.04em}
+.ans-btn.infog{background:rgba(0,194,224,.1);border-color:rgba(0,194,224,.35);color:var(--cyan)}
+.ans-btn.datav{background:rgba(155,89,245,.1);border-color:rgba(155,89,245,.35);color:#b48aff}
+.ans-btn:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.2)}
+.ans-btn.flash-correct{background:rgba(126,203,53,.3)!important;border-color:#7ecb35!important;transform:scale(1.06)}
+.ans-btn.flash-wrong{background:rgba(255,107,107,.3)!important;border-color:#ff6b6b!important}
+.ans-btn:disabled{cursor:default;opacity:.55}
+/* feedback */
+.feedback{min-height:48px;text-align:center;font-size:.8rem;font-weight:600;transition:opacity .25s,transform .25s;opacity:0;transform:translateY(6px)}
+.feedback.show{opacity:1;transform:translateY(0)}
+.feedback.correct{color:#7ecb35}
+.feedback.wrong{color:#ff6b6b}
+/* progress dots */
+.car-dots{display:flex;gap:6px;justify-content:center}
+.car-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .25s}
+.car-dot.done-correct{background:#7ecb35}
+.car-dot.done-wrong{background:#ff6b6b}
+.car-dot.current{background:var(--cyan);transform:scale(1.4);box-shadow:0 0 6px var(--cyan)}
+/* score box */
+.score-box{display:none;flex-direction:column;align-items:center;gap:10px;padding:24px 32px;background:rgba(0,194,224,.06);border:2px solid rgba(0,194,224,.25);border-radius:16px;text-align:center;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.score-box .big{font-family:var(--serif);font-size:2.4rem;font-weight:900;color:var(--cyan)}
+.score-box .sub{font-size:.78rem;color:rgba(255,255,255,.55)}
+.retry-btn{padding:9px 24px;border-radius:8px;border:none;background:var(--cyan);color:#0a0a14;font-family:var(--sans);font-size:.8rem;font-weight:800;cursor:pointer;transition:transform .15s}
+.retry-btn:hover{transform:scale(1.04)}
+</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">11 / 32</div>
+<section class="slide bg-dark" style="justify-content:center">
+  <div class="challenge-wrap">
+
+    <div class="challenge-header">
+      <div class="eyebrow"><span class="ln"></span>Challenge Activity — Slide 11</div>
+      <div class="ttl" style="font-size:1.5rem;margin-bottom:4px">Infographic <span class="acc">or</span> Data Visualization?</div>
+      <div style="font-size:.75rem;color:rgba(255,255,255,.45)">Look at each image and classify it. 10 rounds.</div>
+    </div>
+
+    <!-- carousel -->
+    <div class="car-viewport" id="carViewport">
+      <div class="car-strip" id="carStrip"></div>
+      <div class="car-flash" id="carFlash"></div>
+      <div class="car-badge" id="carBadge"></div>
+      <span class="car-num" id="carNum"></span>
+      <button class="car-arrow left" id="carPrev" onclick="navigate(-1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="car-arrow right" id="carNext" onclick="navigate(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- progress dots -->
+    <div class="car-dots" id="carDots"></div>
+
+    <!-- answer buttons -->
+    <div class="ans-row" id="ansRow">
+      <button class="ans-btn infog" onclick="answer('infographic')"><i class="fas fa-image"></i> Infographic</button>
+      <button class="ans-btn datav" onclick="answer('datavis')"><i class="fas fa-chart-scatter"></i> Data Visualization</button>
+    </div>
+
+    <!-- feedback -->
+    <div class="feedback" id="feedback"></div>
+
+    <!-- score box (shown after all 10) -->
+    <div class="score-box" id="scoreBox">
+      <div class="big" id="scoreNum"></div>
+      <div class="sub" id="scoreSub"></div>
+      <button class="retry-btn" onclick="restart()"><i class="fas fa-rotate-left"></i> Try Again</button>
+    </div>
+
+  </div>
+</section>
+
+<a class="nbtn" id="bp" href="slide-10.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-12.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot active" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot" onclick="location='slide-30.html'"></button><button class="dot" onclick="location='slide-31.html'"></button><button class="dot" onclick="location='slide-32.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div>
+<script>
+/* ── challenge data ── */
+/* answers: 1=infographic, 2=datavis, 3=infographic, 4=datavis, 5=infographic,
+            6=datavis, 7=infographic, 8=datavis, 9=infographic, 10=datavis
+   (update these to match your actual images) */
+var ITEMS = [
+  { img:'src/infographicsvsdatavisualization/1.jpeg',  ans:'datavis',      label:'Data Visualization', hint:'Interactive executive dashboard with real-time metrics, line charts, doughnut charts, and quantitative performance indicators.' },
+  { img:'src/infographicsvsdatavisualization/2.jpeg',  ans:'infographic',  label:'Infographic',        hint:'Tells a clear, step-by-step educational story using custom illustrations, numbered stages, and explanatory text.' },
+  { img:'src/infographicsvsdatavisualization/3.jpeg',  ans:'datavis',      label:'Data Visualization', hint:'Dense statistical data, climate anomaly scatter plots, maps, and precise numerical axes for visual analysis.' },
+  { img:'src/infographicsvsdatavisualization/4.jpeg',  ans:'infographic',  label:'Infographic',        hint:'Side-by-side comparison boxes, stylized food illustrations, icons, and bullet points to convey a qualitative concept.' },
+  { img:'src/infographicsvsdatavisualization/5.jpeg',  ans:'datavis',      label:'Data Visualization', hint:'Global density heatmap mapping complex spatial data points and connectivity metrics.' },
+  { img:'src/infographicsvsdatavisualization/6.jpeg',  ans:'infographic',  label:'Infographic',        hint:'Sequential numbered steps, custom icons, and bite-sized text recommendations to guide environmental choices.' },
+  { img:'src/infographicsvsdatavisualization/7.jpeg',  ans:'datavis',      label:'Data Visualization', hint:'Multi-asset financial trading chart with live technical indicators (Bollinger Bands, MACD) and order books.' },
+  { img:'src/infographicsvsdatavisualization/8.jpeg',  ans:'infographic',  label:'Infographic',        hint:'Side-by-side workplace comparison using contextual character illustrations, color-coded themes, and summarized text blocks.' },
+  { img:'src/infographicsvsdatavisualization/9.jpeg',  ans:'datavis',      label:'Data Visualization', hint:'Quantitative trend data over time using standardized mathematical chart axes and quantitative data series.' },
+  { img:'src/infographicsvsdatavisualization/10.jpeg', ans:'infographic',  label:'Infographic',        hint:'Step-by-step process narrative using custom illustrations, icons, and explanatory labels to describe a journey.' }
+];
+
+var current = 0;
+var results = new Array(ITEMS.length).fill(null);
+var animating = false;
+
+/* ── build strip: all images pre-loaded side by side ── */
+function buildStrip() {
+  var strip = document.getElementById('carStrip');
+  ITEMS.forEach(function(item) {
+    var img = document.createElement('img');
+    img.src = item.img;
+    img.alt = 'Challenge image';
+    strip.appendChild(img);
+  });
+}
+
+function syncStrip() {
+  document.getElementById('carStrip').style.transform = 'translateX(-' + (current * 100) + '%)';
+  document.getElementById('carNum').textContent = (current + 1) + ' / ' + ITEMS.length;
+  document.getElementById('carPrev').disabled = (current === 0);
+  document.getElementById('carNext').disabled = (current === ITEMS.length - 1);
+}
+
+function buildDots() {
+  var el = document.getElementById('carDots');
+  el.innerHTML = '';
+  ITEMS.forEach(function(_, i) {
+    var d = document.createElement('span');
+    d.className = 'car-dot' + (i === current ? ' current' : '') + (results[i] ? ' done-' + results[i] : '');
+    el.appendChild(d);
+  });
+}
+
+function navigate(dir) {
+  if (animating) return;
+  var next = current + dir;
+  if (next < 0 || next >= ITEMS.length) return;
+  animating = true;
+  current = next;
+  syncStrip();
+  /* restore state for revisited slide */
+  var btns = document.querySelectorAll('.ans-btn');
+  if (results[current] !== null) {
+    btns.forEach(function(b) { b.disabled = true; });
+    showFeedback(results[current] === 'correct', current);
+  } else {
+    btns.forEach(function(b) { b.disabled = false; b.className = b.className.replace(/ flash-\w+/g,''); });
+    hideFeedback();
+  }
+  buildDots();
+  setTimeout(function() { animating = false; }, 460);
+}
+
+function answer(choice) {
+  if (results[current] !== null || animating) return;
+  var correct = (choice === ITEMS[current].ans);
+  results[current] = correct ? 'correct' : 'wrong';
+
+  /* flash the chosen button */
+  var btns = document.querySelectorAll('.ans-btn');
+  btns.forEach(function(b) { b.disabled = true; });
+  var chosen = choice === 'infographic' ? btns[0] : btns[1];
+  chosen.classList.add(correct ? 'flash-correct' : 'flash-wrong');
+
+  /* overlay flash on image */
+  var flash = document.getElementById('carFlash');
+  flash.className = 'car-flash ' + (correct ? 'correct' : 'wrong');
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() { flash.classList.add('pop'); });
+  });
+  setTimeout(function() { flash.classList.remove('pop'); }, 500);
+
+  /* emoji badge */
+  var badge = document.getElementById('carBadge');
+  badge.textContent = correct ? '✅' : '❌';
+  badge.className = 'car-badge pop';
+  setTimeout(function() { badge.className = 'car-badge'; }, 700);
+
+  showFeedback(correct, current);
+  buildDots();
+
+  /* auto-advance */
+  var delay = 1400;
+  if (current < ITEMS.length - 1) {
+    setTimeout(function() { navigate(1); }, delay);
+  } else {
+    var allDone = results.every(function(r) { return r !== null; });
+    if (allDone) setTimeout(showScore, delay + 200);
+  }
+}
+
+function showFeedback(correct, idx) {
+  var el = document.getElementById('feedback');
+  el.className = 'feedback';
+  /* force reflow for re-animation */
+  void el.offsetWidth;
+  el.className = 'feedback show ' + (correct ? 'correct' : 'wrong');
+  el.innerHTML = correct
+    ? '<i class="fas fa-circle-check"></i> Correct! — ' + ITEMS[idx].hint
+    : '<i class="fas fa-circle-xmark"></i> Not quite. This is a <strong>' + ITEMS[idx].label + '</strong>. ' + ITEMS[idx].hint;
+}
+
+function hideFeedback() {
+  var el = document.getElementById('feedback');
+  el.className = 'feedback';
+  el.innerHTML = '';
+}
+
+function showScore() {
+  var score = results.filter(function(r) { return r === 'correct'; }).length;
+  document.getElementById('ansRow').style.display = 'none';
+  document.getElementById('feedback').style.display = 'none';
+  var box = document.getElementById('scoreBox');
+  box.style.display = 'flex';
+  document.getElementById('scoreNum').textContent = score + ' / ' + ITEMS.length;
+  var msg = score === 10 ? '🏆 Perfect score! You nailed it.'
+          : score >= 7  ? '🎉 Great job! Strong understanding.'
+          : score >= 5  ? '👍 Good effort — review the differences.'
+          :               '📖 Keep studying — you\'ll get it!';
+  document.getElementById('scoreSub').textContent = msg;
+}
+
+function restart() {
+  results = new Array(ITEMS.length).fill(null);
+  current = 0;
+  animating = false;
+  document.getElementById('ansRow').style.display = 'flex';
+  document.getElementById('feedback').style.display = '';
+  document.getElementById('scoreBox').style.display = 'none';
+  document.querySelectorAll('.ans-btn').forEach(function(b) {
+    b.disabled = false;
+    b.className = b.className.replace(/ flash-\w+/g,'');
+  });
+  syncStrip();
+  hideFeedback();
+  buildDots();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') location = 'slide-12.html';
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   location = 'slide-10.html';
+});
+var sx = 0;
+document.addEventListener('touchstart', function(e) { sx = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', function(e) {
+  var dx = e.changedTouches[0].clientX - sx;
+  if (Math.abs(dx) > 50) location = dx < 0 ? 'slide-12.html' : 'slide-10.html';
+});
+function share() {
+  var u = location.href;
+  if (navigator.share) { navigator.share({ title: 'Infographics', url: u }).catch(function() {}); }
+  else { navigator.clipboard.writeText(u).then(function() { var t = document.getElementById('toast'); t.classList.add('show'); setTimeout(function() { t.classList.remove('show'); }, 2500); }); }
+}
+
+/* init */
+buildStrip();
+syncStrip();
+buildDots();
+</script>
+</body></html>

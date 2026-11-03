@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 22 / 36 — Icon Grid & Geometric Construction</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:61%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">22 / 36</div>
+<section class="slide bg-cyan">
+  <div class="eyebrow"><span class="ln"></span>Part 3 — Construction</div>
+  <div class="ttl" style="text-align:center;margin-bottom:16px">The <span class="acc">Icon Grid</span> &amp; Geometric Construction</div>
+  <div class="two-col" style="max-width:880px;gap:28px;align-items:start">
+    <!-- Grid visual -->
+    <div style="text-align:center">
+      <div class="label" style="text-align:center;margin-bottom:10px">24×24px Icon Grid</div>
+      <svg width="260" height="260" viewBox="0 0 260 260" style="display:block;margin:0 auto">
+        <!-- Grid background -->
+        <rect x="30" y="30" width="200" height="200" rx="4" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+        <!-- Grid lines -->
+        <line x1="30" y1="63" x2="230" y2="63" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+        <line x1="30" y1="96" x2="230" y2="96" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+        <line x1="30" y1="130" x2="230" y2="130" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+        <line x1="30" y1="163" x2="230" y2="163" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+        <line x1="30" y1="196" x2="230" y2="196" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+        <line x1="63" y1="30" x2="63" y2="230" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+        <line x1="96" y1="30" x2="96" y2="230" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+        <line x1="130" y1="30" x2="130" y2="230" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+        <line x1="163" y1="30" x2="163" y2="230" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+        <line x1="196" y1="30" x2="196" y2="230" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+        <!-- Bounding box -->
+        <rect x="30" y="30" width="200" height="200" rx="4" fill="none" stroke="rgba(0,194,224,.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <!-- Live area -->
+        <rect x="46" y="46" width="168" height="168" rx="3" fill="none" stroke="rgba(126,203,53,.4)" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <!-- Key shapes -->
+        <circle cx="130" cy="130" r="76" fill="none" stroke="rgba(155,89,245,.25)" stroke-width="1" stroke-dasharray="2,3"/>
+        <rect x="54" y="54" width="152" height="152" rx="2" fill="none" stroke="rgba(245,166,35,.2)" stroke-width="1" stroke-dasharray="2,3"/>
+        <!-- Actual icon: home built on grid -->
+        <polygon points="130,60 180,105 180,190 80,190 80,105" fill="rgba(0,194,224,.1)" stroke="#00c2e0" stroke-width="2.5" stroke-linejoin="round"/>
+        <rect x="108" y="148" width="44" height="42" rx="3" fill="rgba(0,194,224,.15)" stroke="#00c2e0" stroke-width="2"/>
+        <rect x="118" y="158" width="24" height="16" rx="2" fill="rgba(0,194,224,.2)"/>
+        <!-- Labels -->
+        <text x="130" y="248" text-anchor="middle" font-family="Space Mono" font-size="7" fill="rgba(0,194,224,.5)" letter-spacing="1">BOUNDING BOX</text>
+        <text x="130" y="22" text-anchor="middle" font-family="Space Mono" font-size="7" fill="rgba(126,203,53,.5)" letter-spacing="1">LIVE AREA (padding: 8px)</text>
+      </svg>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:8px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:16px;height:2px;background:rgba(0,194,224,.5);border-top:1px dashed rgba(0,194,224,.5)"></div><span style="font-size:.6rem;color:rgba(0,194,224,.6)">Bounding box</span></div>
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:16px;height:2px;background:rgba(126,203,53,.5);border-top:1px dashed rgba(126,203,53,.5)"></div><span style="font-size:.6rem;color:rgba(126,203,53,.6)">Live area</span></div>
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:16px;height:2px;background:rgba(155,89,245,.4);border-top:1px dashed rgba(155,89,245,.4)"></div><span style="font-size:.6rem;color:rgba(155,89,245,.6)">Key shapes</span></div>
+      </div>
+    </div>
+    <!-- Steps -->
+    <div>
+      <div class="label lime" style="margin-bottom:10px">Construction Steps</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="step-row"><span class="step-num">01</span><div><div class="step-title">Identify the Core Shape</div><div class="step-desc">Every icon has one primary shape that carries its meaning. Find it first.</div></div></div>
+        <div class="step-row lime"><span class="step-num lime">02</span><div><div class="step-title">Build from Primitives</div><div class="step-desc">Use only circles, rectangles, and triangles. Use Pathfinder to unite, subtract, intersect.</div></div></div>
+        <div class="step-row coral"><span class="step-num coral">03</span><div><div class="step-title">Apply Consistent Stroke Weight</div><div class="step-desc">Standard: <strong style="color:var(--cyan)">2px stroke at 24×24px</strong>. Scale proportionally for other sizes.</div></div></div>
+        <div class="step-row violet"><span class="step-num violet">04</span><div><div class="step-title">Apply Corner Radius</div><div class="step-desc">Decide sharp vs rounded — apply consistently. 2px radius = subtly friendly.</div></div></div>
+        <div class="step-row amber"><span class="step-num amber">05</span><div><div class="step-title">Test at Target Size</div><div class="step-desc">Zoom to actual display size. If any detail disappears — simplify.</div></div></div>
+      </div>
+      <div class="kbox" style="margin-top:12px">💡 Use the <strong>fewest anchor points possible</strong>. A smooth curve needs only 2 points — one at each end.</div>
+    </div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-21.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-23.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot active" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot" onclick="location='slide-30.html'"></button><button class="dot" onclick="location='slide-31.html'"></button><button class="dot" onclick="location='slide-32.html'"></button><button class="dot" onclick="location='slide-33.html'"></button><button class="dot" onclick="location='slide-34.html'"></button><button class="dot" onclick="location='slide-35.html'"></button><button class="dot" onclick="location='slide-36.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-23.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-21.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-23.html':'slide-21.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Infographics',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

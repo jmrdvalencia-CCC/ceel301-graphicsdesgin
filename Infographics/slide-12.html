@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 12 / 35 — 4 Core Principles</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+#pbar{width:34%}
+.principles-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;width:100%}
+.p-card{border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.p-card:hover{transform:translateY(-3px)}
+.p-card .num{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;opacity:.5}
+.p-card .name{font-family:var(--serif);font-size:1.4rem;font-weight:900;line-height:1.1}
+.p-card .desc{font-size:.72rem;line-height:1.55;opacity:.7}
+.p-card.accuracy {background:rgba(126,203,53,.08);border:2px solid rgba(126,203,53,.3)}
+.p-card.accuracy .name{color:#7ecb35}
+.p-card.hierarchy{background:rgba(0,194,224,.08);border:2px solid rgba(0,194,224,.3)}
+.p-card.hierarchy .name{color:var(--cyan)}
+.p-card.simplicity{background:rgba(255,107,107,.08);border:2px solid rgba(255,107,107,.3)}
+.p-card.simplicity .name{color:#ff6b6b}
+.p-card.context   {background:rgba(155,89,245,.08);border:2px solid rgba(155,89,245,.3)}
+.p-card.context   .name{color:#b48aff}
+</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">12 / 35</div>
+<section class="slide bg-ink" style="justify-content:center;gap:18px">
+  <div class="eyebrow" style="text-align:center"><span class="ln"></span>Part 2 — Data Visualization</div>
+  <div class="ttl" style="text-align:center">The <span class="acc">4 Core Principles</span><br><span style="font-size:1rem;font-family:var(--sans);font-weight:400;color:rgba(255,255,255,.45)">of Data Visualization</span></div>
+  <div class="principles-grid">
+    <div class="p-card accuracy" onclick="location='slide-13.html'">
+      <div class="num">01 / 04</div>
+      <div class="name">Accuracy</div>
+      <div class="desc">The visual must be mathematically honest — never distort scales or truncate axes to exaggerate a trend.</div>
+      <div style="font-size:.65rem;color:rgba(126,203,53,.6);margin-top:4px">Click to explore <i class="fas fa-arrow-right"></i></div>
+    </div>
+    <div class="p-card hierarchy" onclick="location='slide-14.html'">
+      <div class="num">02 / 04</div>
+      <div class="name">Hierarchy</div>
+      <div class="desc">The most important insight must be the most visually prominent element — guide the eye intentionally.</div>
+      <div style="font-size:.65rem;color:rgba(0,194,224,.6);margin-top:4px">Click to explore <i class="fas fa-arrow-right"></i></div>
+    </div>
+    <div class="p-card simplicity" onclick="location='slide-15.html'">
+      <div class="num">03 / 04</div>
+      <div class="name">Simplicity</div>
+      <div class="desc">Remove chartjunk — every decorative element that adds no information must go. Less is more.</div>
+      <div style="font-size:.65rem;color:rgba(255,107,107,.6);margin-top:4px">Click to explore <i class="fas fa-arrow-right"></i></div>
+    </div>
+    <div class="p-card context" onclick="location='slide-16.html'">
+      <div class="num">04 / 04</div>
+      <div class="name">Context</div>
+      <div class="desc">A number without context is meaningless. Always provide the benchmark, timeframe, or comparison.</div>
+      <div style="font-size:.65rem;color:rgba(155,89,245,.6);margin-top:4px">Click to explore <i class="fas fa-arrow-right"></i></div>
+    </div>
+  </div>
+  <div class="kbox" style="max-width:760px;text-align:center;margin-top:4px">These four principles are the foundation of every effective chart, dashboard, and data story.</div>
+</section>
+<a class="nbtn" id="bp" href="slide-11.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-13.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot active" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot" onclick="location='slide-30.html'"></button><button class="dot" onclick="location='slide-31.html'"></button><button class="dot" onclick="location='slide-32.html'"></button><button class="dot" onclick="location='slide-33.html'"></button><button class="dot" onclick="location='slide-34.html'"></button><button class="dot" onclick="location='slide-35.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-13.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-11.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-13.html':'slide-11.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Infographics',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Motion Graphics — Logo Animation & Basic Transitions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--surface:#1a1a1a;--surface2:#222;--border:#2e2e2e;
+  --text:#f0f0f0;--muted:#888;--tag-bg:#1e1e1e;
+  --accent:#ff4d00;--accent-lt:rgba(255,77,0,0.12);
+  --radius:10px;--font:'Inter',system-ui,sans-serif;
+}
+html,body{height:100%;overflow:hidden;background:var(--bg);font-family:var(--font);color:var(--text);-webkit-font-smoothing:antialiased}
+#shell{display:flex;flex-direction:column;height:100vh;width:100vw;overflow:hidden}
+#topbar{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:52px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
+#topbar .lbl{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+#topbar .ctr{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+#viewport{flex:1;position:relative;overflow:hidden}
+.slide{position:absolute;inset:0;padding:40px 48px;overflow-y:auto;overflow-x:hidden;display:none;flex-direction:column;align-items:center;justify-content:center}
+.slide.active{display:flex}
+.slide-inner{width:100%;max-width:900px;display:flex;flex-direction:column;gap:24px}
+#bottom-nav{display:flex;align-items:center;justify-content:center;gap:20px;padding:0 28px;height:56px;border-top:1px solid var(--border);background:var(--surface);flex-shrink:0}
+.nav-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .15s,background .15s}
+.nav-btn:hover:not(:disabled){border-color:var(--accent);background:var(--accent-lt);color:var(--accent)}
+.nav-btn:disabled{opacity:.25;cursor:default}
+.nav-btn svg{width:16px;height:16px}
+#dots{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:center;max-width:600px}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--border);cursor:pointer;border:none;transition:background .2s,width .2s,border-radius .2s;flex-shrink:0;padding:0}
+.dot.active{width:16px;border-radius:3px;background:var(--accent)}
+/* typography */
+.kicker{display:inline-flex;align-items:center;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--accent-lt);padding:4px 10px;border-radius:100px;width:fit-content;border:1px solid rgba(255,77,0,.2)}
+h1{font-size:clamp(30px,5vw,52px);font-weight:800;line-height:1.05;letter-spacing:-.025em;color:var(--text)}
+h1 em{font-style:normal;color:var(--accent)}
+h2{font-size:clamp(22px,3.5vw,36px);font-weight:700;line-height:1.15;letter-spacing:-.02em}
+h3{font-size:clamp(14px,2vw,18px);font-weight:600;line-height:1.4;color:var(--text)}
+p{font-size:clamp(13px,1.6vw,15px);line-height:1.75;color:var(--muted);max-width:66ch}
+p strong{color:var(--text);font-weight:600}
+.h-rule{width:32px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+/* card */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:10px}
+.card p{font-size:13px;margin:0}
+/* tag */
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--tag-bg);color:var(--muted);padding:3px 8px;border-radius:100px;width:fit-content;border:1px solid var(--border)}
+/* callout */
+.callout{background:var(--accent-lt);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;font-size:13px;line-height:1.65;color:var(--text)}
+.callout strong{color:var(--accent)}
+/* table */
+.tbl-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{background:var(--tag-bg);font-weight:600;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:none}
+td strong{color:var(--accent);font-weight:600}
+/* image */
+.img-wrap{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);flex-shrink:0;background:var(--surface2)}
+.img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+/* video embed */
+.vid-wrap{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);flex-shrink:0;position:relative;background:#000}
+.vid-wrap iframe{width:100%;height:100%;display:block;border:none}
+/* checklist */
+.checklist{display:flex;flex-direction:column;gap:8px;list-style:none}
+.checklist li{display:flex;gap:10px;font-size:13px;line-height:1.5;color:var(--muted);align-items:flex-start}
+.checklist li::before{content:'→';color:var(--accent);font-weight:700;font-size:12px;flex-shrink:0;margin-top:2px}
+.checklist li strong{color:var(--text)}
+/* property cards */
+.prop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.prop-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center}
+.prop-icon{font-size:28px}
+.prop-card h3{font-size:13px;color:var(--accent)}
+.prop-card p{font-size:11px;margin:0;max-width:none}
+/* easing vis */
+.ease-row{display:flex;flex-direction:column;gap:6px}
+.ease-item{display:flex;align-items:center;gap:12px;font-size:12px}
+.ease-bar-wrap{flex:1;height:6px;background:var(--surface2);border-radius:3px;overflow:hidden;position:relative}
+.ease-bar{height:100%;border-radius:3px;background:var(--accent)}
+/* timeline */
+.timeline{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-size:11px;font-family:monospace;color:var(--muted);line-height:2}
+/* storyboard */
+.sb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sb-frame{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.sb-screen{height:70px;background:var(--surface2);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
+.sb-info{padding:8px;font-size:10px;color:var(--muted);line-height:1.5}
+.sb-info strong{color:var(--accent);display:block;margin-bottom:2px}
+/* brand personality chips */
+.brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.brand-chip{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;gap:6px}
+.brand-chip .bname{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.brand-chip p{font-size:11px;margin:0;max-width:none}
+/* direction diagram */
+.dir-diagram{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:0;text-align:center;font-size:11px;font-weight:600;color:var(--muted);min-height:120px}
+.dir-center{display:flex;align-items:center;justify-content:center;background:var(--accent-lt);border:1px solid rgba(255,77,0,.3);border-radius:6px;color:var(--accent);font-size:12px}
+.dir-cell{display:flex;align-items:center;justify-content:center;padding:8px}
+/* obj list */
+.obj-list{display:flex;flex-direction:column;gap:8px;list-style:none}
+.obj-list li{display:flex;gap:10px;font-size:13px;color:var(--muted);line-height:1.5;align-items:flex-start}
+.obj-num{font-size:10px;font-weight:700;color:var(--accent);background:var(--accent-lt);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;border:1px solid rgba(255,77,0,.2)}
+/* title */
+.title-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.title-sub{font-size:clamp(13px,1.8vw,16px);color:var(--muted);line-height:1.65;max-width:54ch}
+/* q list */
+.q-list{display:flex;flex-direction:column;gap:10px;list-style:none;counter-reset:q}
+.q-list li{counter-increment:q;display:flex;gap:12px;font-size:13px;line-height:1.6;color:var(--muted);align-items:flex-start}
+.q-list li::before{content:counter(q);min-width:22px;height:22px;background:var(--tag-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted);flex-shrink:0;margin-top:1px;border:1px solid var(--border)}
+@media(max-width:700px){
+  .slide{padding:20px 18px;justify-content:flex-start;padding-top:24px}
+  .cols2,.cols3,.prop-grid,.sb-grid,.brand-grid{grid-template-columns:1fr}
+  #topbar{padding:0 16px}
+  #bottom-nav{padding:0 16px;gap:12px}
+}
+</style>
+</head>
+<body>
+<div id="shell">
+  <header id="topbar">
+    <span class="lbl">Motion Graphics &middot; Logo Animation &amp; Transitions</span>
+    <span class="ctr" id="ctr">1 / 24</span>
+  </header>
+  <main id="viewport"></main>
+  <footer id="bottom-nav">
+    <button class="nav-btn" id="prevBtn" disabled aria-label="Previous">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8L10 13"/></svg>
+    </button>
+    <div id="dots"></div>
+    <button class="nav-btn" id="nextBtn" aria-label="Next">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3L11 8L6 13"/></svg>
+    </button>
+  </footer>
+</div>
+<script src="slides.js"></script>
+</body>
+</html>

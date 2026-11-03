@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 34 / 36 — Icon System Consistency</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:94%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">34 / 36</div>
+<section class="slide bg-ink">
+  <div class="eyebrow"><span class="ln"></span>Deep Dive — Icon Systems</div>
+  <div class="ttl" style="text-align:center;margin-bottom:16px">Icon System <span class="acc">Consistency</span></div>
+  <div class="two-col" style="max-width:880px;gap:24px">
+    <!-- Inconsistent set -->
+    <div>
+      <div class="label coral" style="margin-bottom:12px;text-align:center">✗ Inconsistent Set</div>
+      <div style="background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.3);border-radius:14px;padding:20px">
+        <svg width="100%" height="120" viewBox="0 0 280 120">
+          <!-- Mixed: outline, filled, different weights, different sizes -->
+          <!-- Home: outline thin -->
+          <polygon points="40,70 40,50 55,38 70,50 70,70" fill="none" stroke="#00c2e0" stroke-width="1" stroke-linejoin="round"/>
+          <rect x="48" y="58" width="14" height="12" rx="1" fill="none" stroke="#00c2e0" stroke-width="1"/>
+          <text x="55" y="88" text-anchor="middle" font-family="Inter" font-size="7" fill="rgba(255,107,107,.6)">1px stroke</text>
+          <!-- Search: filled fat -->
+          <circle cx="130" cy="52" r="16" fill="#7ecb35" opacity=".8"/>
+          <line x1="141" y1="63" x2="152" y2="74" stroke="#7ecb35" stroke-width="4" stroke-linecap="round"/>
+          <text x="135" y="88" text-anchor="middle" font-family="Inter" font-size="7" fill="rgba(255,107,107,.6)">Filled + 4px</text>
+          <!-- Settings: outline thick, large -->
+          <circle cx="220" cy="52" r="20" fill="none" stroke="#9b59f5" stroke-width="3"/>
+          <circle cx="220" cy="52" r="8" fill="rgba(155,89,245,.2)"/>
+          <text x="220" y="88" text-anchor="middle" font-family="Inter" font-size="7" fill="rgba(255,107,107,.6)">3px, oversized</text>
+          <!-- Labels -->
+          <text x="55" y="100" text-anchor="middle" font-family="Inter" font-size="8" fill="rgba(255,255,255,.5)">Home</text>
+          <text x="135" y="100" text-anchor="middle" font-family="Inter" font-size="8" fill="rgba(255,255,255,.5)">Search</text>
+          <text x="220" y="100" text-anchor="middle" font-family="Inter" font-size="8" fill="rgba(255,255,255,.5)">Settings</text>
+          <text x="140" y="116" text-anchor="middle" font-family="Space Mono" font-size="7" fill="rgba(255,107,107,.6)" letter-spacing="1">MIXED STYLES — UNPROFESSIONAL</text>
+        </svg>
+        <div style="display:flex;flex-direction:column;gap:4px;margin-top:4px">
+          <div style="font-size:.65rem;color:rgba(255,107,107,.8)">✗ Different stroke weights (1px, 4px, 3px)</div>
+          <div style="font-size:.65rem;color:rgba(255,107,107,.8)">✗ Mixed styles (outline + filled)</div>
+          <div style="font-size:.65rem;color:rgba(255,107,107,.8)">✗ Different sizes and visual weights</div>
+        </div>
+      </div>
+    </div>
+    <!-- Consistent set -->
+    <div>
+      <div class="label lime" style="margin-bottom:12px;text-align:center">✓ Consistent Set</div>
+      <div style="background:rgba(126,203,53,.06);border:1px solid rgba(126,203,53,.3);border-radius:14px;padding:20px">
+        <svg width="100%" height="120" viewBox="0 0 280 120">
+          <!-- All outline, 2px, same size, same corner radius -->
+          <!-- Home -->
+          <polygon points="40,70 40,50 55,38 70,50 70,70" fill="none" stroke="#00c2e0" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="48" y="58" width="14" height="12" rx="2" fill="none" stroke="#00c2e0" stroke-width="2"/>
+          <text x="55" y="88" text-anchor="middle" font-family="Inter" font-size="7" fill="rgba(126,203,53,.7)">2px stroke</text>
+          <!-- Search -->
+          <circle cx="130" cy="52" r="13" fill="none" stroke="#00c2e0" stroke-width="2"/>
+          <line x1="139" y1="61" x2="148" y2="70" stroke="#00c2e0" stroke-width="2" stroke-linecap="round"/>
+          <text x="135" y="88" text-anchor="middle" font-family="Inter" font-size="7" fill="rgba(126,203,53,.7)">2px stroke</text>
+          <!-- Settings -->
+          <circle cx="220" cy="52" r="13" fill="none" stroke="#00c2e0" stroke-width="2"/>
+          <circle cx="220" cy="52" r="5" fill="none" stroke="#00c2e0" stroke-width="2"/>
+          <line x1="220" y1="36" x2="220" y2="33" stroke="#00c2e0" stroke-width="2" stroke-linecap="round"/>
+          <line x1="220" y1="68" x2="220" y2="71" stroke="#00c2e0" stroke-width="2" stroke-linecap="round"/>
+          <line x1="204" y1="52" x2="201" y2="52" stroke="#00c2e0" stroke-width="2" stroke-linecap="round"/>
+          <line x1="236" y1="52" x2="239" y2="52" stroke="#00c2e0" stroke-width="2" stroke-linecap="round"/>
+          <text x="220" y="88" text-anchor="middle" font-family="Inter" font-size="7" fill="rgba(126,203,53,.7)">2px stroke</text>
+          <text x="55" y="100" text-anchor="middle" font-family="Inter" font-size="8" fill="rgba(255,255,255,.5)">Home</text>
+          <text x="135" y="100" text-anchor="middle" font-family="Inter" font-size="8" fill="rgba(255,255,255,.5)">Search</text>
+          <text x="220" y="100" text-anchor="middle" font-family="Inter" font-size="8" fill="rgba(255,255,255,.5)">Settings</text>
+          <text x="140" y="116" text-anchor="middle" font-family="Space Mono" font-size="7" fill="rgba(126,203,53,.7)" letter-spacing="1">CONSISTENT SYSTEM — PROFESSIONAL</text>
+        </svg>
+        <div style="display:flex;flex-direction:column;gap:4px;margin-top:4px">
+          <div style="font-size:.65rem;color:rgba(126,203,53,.8)">✓ Same stroke weight (2px throughout)</div>
+          <div style="font-size:.65rem;color:rgba(126,203,53,.8)">✓ Same style (all outline)</div>
+          <div style="font-size:.65rem;color:rgba(126,203,53,.8)">✓ Same visual weight and grid</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="kbox" style="margin-top:14px;text-align:center">4 properties that must match: <strong>stroke weight · corner radius · style (outline/filled) · visual weight</strong></div>
+</section>
+<a class="nbtn" id="bp" href="slide-33.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-35.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot" onclick="location='slide-30.html'"></button><button class="dot" onclick="location='slide-31.html'"></button><button class="dot" onclick="location='slide-32.html'"></button><button class="dot" onclick="location='slide-33.html'"></button><button class="dot active" onclick="location='slide-34.html'"></button><button class="dot" onclick="location='slide-35.html'"></button><button class="dot" onclick="location='slide-36.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-35.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-33.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-35.html':'slide-33.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Infographics',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

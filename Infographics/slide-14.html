@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 14 / 35 — Principle 02: Hierarchy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+#pbar{width:40%}
+.principle-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;max-width:820px;width:100%}
+.p-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(0,194,224,.1);border:2px solid rgba(0,194,224,.35);border-radius:40px;padding:6px 18px}
+.p-badge .num{font-family:var(--mono);font-size:.6rem;color:rgba(0,194,224,.6)}
+.p-badge .name{font-family:var(--serif);font-size:1.1rem;font-weight:900;color:var(--cyan)}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%}
+.compare-box{border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.compare-box.bad {background:rgba(255,107,107,.06);border:2px solid rgba(255,107,107,.25)}
+.compare-box.good{background:rgba(0,194,224,.06);border:2px solid rgba(0,194,224,.25)}
+.compare-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;margin-bottom:2px}
+.compare-label.bad {color:rgba(255,107,107,.7)}
+.compare-label.good{color:rgba(0,194,224,.7)}
+.rule-row{display:flex;gap:10px;align-items:flex-start;font-size:.72rem;color:rgba(255,255,255,.65);line-height:1.5}
+.rule-row i{margin-top:2px;flex-shrink:0}
+.h-level{border-radius:8px;padding:8px 14px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">14 / 35</div>
+<section class="slide bg-ink" style="justify-content:center;gap:0">
+  <div class="principle-wrap">
+    <div class="eyebrow" style="text-align:center"><span class="ln"></span>4 Core Principles — 02 of 04</div>
+    <div class="p-badge"><span class="num">PRINCIPLE 02</span><span class="name">Hierarchy</span></div>
+    <div style="text-align:center;font-size:.8rem;color:rgba(255,255,255,.55);max-width:560px">Guide the viewer's eye from the most important insight down to supporting detail. Visual weight — size, color, contrast — must match information importance.</div>
+
+    <div class="compare-row">
+      <!-- Bad -->
+      <div class="compare-box bad">
+        <div class="compare-label bad"><i class="fas fa-xmark"></i> NO HIERARCHY — Everything Equal</div>
+        <div style="background:rgba(255,107,107,.05);border-radius:10px;padding:14px">
+          <div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:6px;font-family:var(--mono)">Sales Report Q4 2024</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:6px">Total Revenue: $1.2M</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:6px">Growth vs Q3: +12%</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:6px">Top Region: Luzon</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:6px">Source: Internal CRM</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.5)">Prepared by: Analytics Team</div>
+        </div>
+        <div class="rule-row"><i class="fas fa-triangle-exclamation" style="color:#ff6b6b"></i>All text is the same size and weight — the viewer doesn't know where to look first.</div>
+      </div>
+      <!-- Good -->
+      <div class="compare-box good">
+        <div class="compare-label good"><i class="fas fa-check"></i> CLEAR HIERARCHY — Eye Guided</div>
+        <div style="background:rgba(0,194,224,.05);border-radius:10px;padding:14px">
+          <div class="h-level" style="background:rgba(0,194,224,.2);margin-bottom:8px">
+            <span style="font-family:var(--serif);font-size:1.3rem;font-weight:900;color:#fff">+12%</span>
+            <span style="font-size:.6rem;color:rgba(0,194,224,.8);font-weight:700">HEADLINE</span>
+          </div>
+          <div class="h-level" style="background:rgba(0,194,224,.1);margin-bottom:6px">
+            <span style="font-size:.8rem;font-weight:700;color:rgba(255,255,255,.85)">Growth vs Q3 · Luzon leads</span>
+            <span style="font-size:.55rem;color:rgba(0,194,224,.5)">SUPPORT</span>
+          </div>
+          <div class="h-level" style="background:rgba(255,255,255,.04);margin-bottom:6px">
+            <span style="font-size:.68rem;color:rgba(255,255,255,.5)">Total Revenue: $1.2M · Q4 2024</span>
+            <span style="font-size:.5rem;color:rgba(255,255,255,.25)">DETAIL</span>
+          </div>
+          <div class="h-level" style="background:rgba(255,255,255,.02)">
+            <span style="font-size:.58rem;color:rgba(255,255,255,.25)">Source: Internal CRM · Analytics Team</span>
+            <span style="font-size:.48rem;color:rgba(255,255,255,.15)">META</span>
+          </div>
+        </div>
+        <div class="rule-row"><i class="fas fa-circle-check" style="color:var(--cyan)"></i>The +12% headline dominates instantly. Supporting data follows in descending visual weight.</div>
+      </div>
+    </div>
+
+    <div class="kbox" style="max-width:820px;text-align:center">
+      <strong style="color:var(--cyan)">Rule:</strong> Ask yourself — "What is the ONE thing I want the viewer to remember?" Make that element the biggest, boldest, most contrasted item on the page.
+    </div>
+
+    <div style="display:flex;gap:24px;font-size:.7rem;color:rgba(255,255,255,.5)">
+      <span><i class="fas fa-arrow-left" style="color:rgba(255,255,255,.3)"></i> <a href="slide-13.html" style="color:rgba(255,255,255,.4);text-decoration:none">Accuracy</a></span>
+      <span style="color:rgba(255,255,255,.25)">|</span>
+      <span><a href="slide-15.html" style="color:var(--cyan);text-decoration:none">Next: Simplicity <i class="fas fa-arrow-right"></i></a></span>
+    </div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-13.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-15.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot active" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot" onclick="location='slide-30.html'"></button><button class="dot" onclick="location='slide-31.html'"></button><button class="dot" onclick="location='slide-32.html'"></button><button class="dot" onclick="location='slide-33.html'"></button><button class="dot" onclick="location='slide-34.html'"></button><button class="dot" onclick="location='slide-35.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-15.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-13.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-15.html':'slide-13.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Infographics',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 1 / 31 — Title — Infographics & Data Visualization</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+#pbar{width:4%}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,194,224,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,194,224,.04) 1px,transparent 1px);background-size:40px 40px;z-index:0}
+</style>
+</head><body>
+<div id="deck">
+<div id="pbar"></div><div id="ctr">1 / 32</div>
+<section class="slide bg-dark" id="s1">
+  <div class="grid-bg"></div>
+  <div style="text-align:center;position:relative;z-index:2">
+    <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.3em;color:rgba(0,194,224,.45);margin-bottom:16px;text-transform:uppercase">Module 08 &nbsp;·&nbsp; Graphics Design · 26–27 1st Sem</div>
+    <div style="font-family:var(--serif);font-size:clamp(2.6rem,6.5vw,5rem);font-weight:900;line-height:.95;color:#fff;margin-bottom:4px">Infographics</div>
+    <div style="font-family:var(--serif);font-size:clamp(1.2rem,3vw,2.2rem);font-weight:400;line-height:1.1;color:var(--cyan);font-style:italic;margin-bottom:22px">Data Visualization &amp; Icon Design</div>
+    <!-- inline SVG: mini bar chart decoration -->
+    <svg width="220" height="60" viewBox="0 0 220 60" style="margin:0 auto 20px;display:block;opacity:.5">
+      <rect x="10" y="30" width="22" height="28" rx="3" fill="#00c2e0" opacity=".7"/>
+      <rect x="40" y="18" width="22" height="40" rx="3" fill="#7ecb35" opacity=".7"/>
+      <rect x="70" y="8"  width="22" height="50" rx="3" fill="#00c2e0"/>
+      <rect x="100" y="22" width="22" height="36" rx="3" fill="#9b59f5" opacity=".7"/>
+      <rect x="130" y="14" width="22" height="44" rx="3" fill="#ff6b6b" opacity=".7"/>
+      <rect x="160" y="28" width="22" height="30" rx="3" fill="#f5a623" opacity=".7"/>
+      <rect x="190" y="10" width="22" height="48" rx="3" fill="#00c2e0" opacity=".9"/>
+      <line x1="10" y1="58" x2="212" y2="58" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+    </svg>
+    <div class="pills" style="justify-content:center">
+      <span class="pill cyan">📊 Data Viz</span>
+      <span class="pill lime">🔢 Charts</span>
+      <span class="pill coral">🎨 Color Encoding</span>
+      <span class="pill violet">🔷 Icon Design</span>
+    </div>
+    <div style="margin-top:22px;font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,.2);letter-spacing:.1em">Mrantinkovic et al. (2020) — 3G Handy Guide: Graphic Designing</div>
+  </div>
+</section>
+<a class="nbtn" id="bn" href="slide-02.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots">
+<button class="dot active" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button><button class="dot" onclick="location='slide-22.html'"></button><button class="dot" onclick="location='slide-23.html'"></button><button class="dot" onclick="location='slide-24.html'"></button><button class="dot" onclick="location='slide-25.html'"></button><button class="dot" onclick="location='slide-26.html'"></button><button class="dot" onclick="location='slide-27.html'"></button><button class="dot" onclick="location='slide-28.html'"></button><button class="dot" onclick="location='slide-29.html'"></button><button class="dot" onclick="location='slide-30.html'"></button><button class="dot" onclick="location='slide-31.html'"></button><button class="dot" onclick="location='slide-32.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button>
+<div id="toast">📋 Link copied!</div>
+</div>
+<script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-02.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-02.html':'index.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Infographics',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script>
+</body></html>
