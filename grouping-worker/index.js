@@ -89,6 +89,10 @@ export default {
       ).bind(me.id).first();
       if (existing) return err('You are already in a group');
 
+      /* clean up any old declined row */
+      await env.DB.prepare(
+        'DELETE FROM group_members WHERE student_id=? AND status=\'declined\''
+      ).bind(me.id).run();
       const { name, is_solo, member_ids } = await req.json();
       if (!name) return err('Group name required');
 
@@ -118,6 +122,11 @@ export default {
           'SELECT id FROM group_members WHERE student_id=? AND status != \'declined\''
         ).bind(sid).first();
         if (inGroup) continue;
+
+        /* remove any old declined row so the new pending insert is clean */
+        await env.DB.prepare(
+          'DELETE FROM group_members WHERE student_id=? AND status=\'declined\''
+        ).bind(sid).run();
 
         await env.DB.prepare(
           'INSERT INTO group_members (group_id, student_id, status) VALUES (?,?,?)'

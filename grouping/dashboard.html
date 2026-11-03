@@ -93,7 +93,12 @@
   async function init() {
     const card = document.getElementById('mainCard');
     let groupData;
-    try { groupData = await api('/api/groups/mine'); } catch (_) { groupData = { group: null }; }
+    try {
+      groupData = await api('/api/groups/mine');
+    } catch (ex) {
+      card.innerHTML = '<div class="alert alert-err show" style="margin:20px 0;">Failed to load: ' + esc(ex.message) + '</div><button class="btn btn-outline" onclick="init()">Retry</button>';
+      return;
+    }
 
     if (groupData.group) {
       renderGroupStatus(card, groupData.group);
