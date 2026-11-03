@@ -1,0 +1,6 @@
+# Windows thumbnail cache
+desktop.ini
+Thumbs.db
+
+# Wrangler local state
+grouping-worker/.wrangler/
