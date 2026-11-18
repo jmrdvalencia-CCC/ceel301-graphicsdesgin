@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 14 / 21 — Publish on GitHub Pages</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+#pbar{width:67%}
+.cmd{background:#0d1117;border:1px solid rgba(126,203,53,.25);border-radius:8px;padding:8px 14px;font-family:var(--mono);font-size:.68rem;color:#a8e060;letter-spacing:.04em}
+.cmd span{color:rgba(255,255,255,.3)}
+</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">14 / 21</div>
+<section class="slide bg-lime">
+  <div class="eyebrow"><span class="ln"></span>Part 4 — Publishing &amp; Platforms</div>
+  <div class="ttl" style="text-align:center;margin-bottom:4px">How to Publish on <span class="acc">GitHub Pages</span></div>
+  <div style="font-size:.75rem;color:rgba(255,255,255,.4);text-align:center;margin-bottom:16px;font-family:var(--mono)">Starting after your project is already pushed to GitHub</div>
+
+  <div class="two-col" style="max-width:960px;gap:16px;align-items:start">
+
+    <!-- Left column: steps 1-4 -->
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="step-row lime">
+        <div class="step-num lime">01</div>
+        <div>
+          <div class="step-title">Go to your repository on GitHub</div>
+          <div class="step-desc">Open <strong style="color:#a8e060">github.com</strong> → click your repository → make sure your <code style="font-family:var(--mono);color:#a8e060">index.html</code> is at the root of the repo.</div>
+        </div>
+      </div>
+      <div class="step-row lime">
+        <div class="step-num lime">02</div>
+        <div>
+          <div class="step-title">Open Settings</div>
+          <div class="step-desc">Click the <strong style="color:#a8e060">Settings</strong> tab at the top of the repository page (not your account settings).</div>
+        </div>
+      </div>
+      <div class="step-row lime">
+        <div class="step-num lime">03</div>
+        <div>
+          <div class="step-title">Go to Pages</div>
+          <div class="step-desc">In the left sidebar, scroll down and click <strong style="color:#a8e060">Pages</strong> under the "Code and automation" section.</div>
+        </div>
+      </div>
+      <div class="step-row lime">
+        <div class="step-num lime">04</div>
+        <div>
+          <div class="step-title">Set the source branch</div>
+          <div class="step-desc">Under <em>Branch</em>, select <strong style="color:#a8e060">main</strong> (or <strong style="color:#a8e060">master</strong>) → folder: <strong style="color:#a8e060">/ (root)</strong> → click <strong style="color:#a8e060">Save</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column: steps 5-8 + live URL -->
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="step-row lime">
+        <div class="step-num lime">05</div>
+        <div>
+          <div class="step-title">Wait ~1 minute</div>
+          <div class="step-desc">GitHub builds and deploys your site. Refresh the Pages settings page — a green banner will appear with your live URL.</div>
+        </div>
+      </div>
+      <div class="step-row lime">
+        <div class="step-num lime">06</div>
+        <div>
+          <div class="step-title">Your live URL is ready</div>
+          <div class="step-desc">Format: <span style="font-family:var(--mono);color:#a8e060">https://username.github.io/repo-name</span><br>For a personal portfolio repo named <em>username.github.io</em>, it becomes: <span style="font-family:var(--mono);color:#a8e060">https://username.github.io</span></div>
+        </div>
+      </div>
+      <div class="step-row lime">
+        <div class="step-num lime">07</div>
+        <div>
+          <div class="step-title">Update anytime with a push</div>
+          <div class="step-desc">Every time you push changes to the <strong style="color:#a8e060">main</strong> branch, GitHub Pages automatically rebuilds and redeploys. No manual steps needed.</div>
+        </div>
+      </div>
+      <div class="step-row lime">
+        <div class="step-num lime">08</div>
+        <div>
+          <div class="step-title">(Optional) Add a custom domain</div>
+          <div class="step-desc">In Pages settings → Custom domain → enter <span style="font-family:var(--mono);color:#a8e060">yourname.dev</span>. Point your domain's DNS to GitHub using a CNAME record.</div>
+        </div>
+      </div>
+      <div class="cmd"><span>$ </span>git add . &amp;&amp; git commit -m "update portfolio" &amp;&amp; git push</div>
+    </div>
+
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-13.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-15.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot active" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-15.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-13.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-15.html':'slide-13.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Portfolio Building for IT',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

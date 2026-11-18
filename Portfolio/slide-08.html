@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 8 / 20 — GitHub as a Portfolio Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:40%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">8 / 20</div>
+<section class="slide bg-lime">
+  <div class="eyebrow"><span class="ln"></span>Part 2 — What to Include</div>
+  <div class="ttl" style="text-align:center;margin-bottom:18px"><i class="fab fa-github" style="color:var(--lime)"></i> GitHub as a <span class="acc">Portfolio Tool</span></div>
+  <div class="two-col" style="max-width:900px;gap:16px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;color:var(--lime);text-transform:uppercase;margin-bottom:4px">For Developers</div>
+      <div style="font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:8px">A well-maintained GitHub profile <em>is</em> a portfolio. Employers check it before the interview.</div>
+      <div class="step-row lime"><div class="step-num lime">01</div><div><div class="step-title">Pin your best repos</div><div class="step-desc">Pin 4–6 repositories that represent your strongest work. Unpin tutorial clones.</div></div></div>
+      <div class="step-row lime"><div class="step-num lime">02</div><div><div class="step-title">Write a README for every pinned repo</div><div class="step-desc">What it does, how to run it, a screenshot. No README = the project doesn't exist to a recruiter.</div></div></div>
+      <div class="step-row lime"><div class="step-num lime">03</div><div><div class="step-title">Keep commits consistent</div><div class="step-desc">Regular commits show you actually work. Avoid 50 commits in one day then nothing for months.</div></div></div>
+      <div class="step-row lime"><div class="step-num lime">04</div><div><div class="step-title">Add a profile README</div><div class="step-desc">Create a repo named exactly as your username. Add a short bio, skills, and links.</div></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;color:var(--lime);text-transform:uppercase;margin-bottom:4px">A Good README Includes</div>
+      <div style="background:rgba(0,0,0,.3);border:1px solid rgba(126,203,53,.2);border-radius:12px;padding:16px 18px;font-family:var(--mono);font-size:.65rem;color:rgba(255,255,255,.7);line-height:1.8">
+        <span style="color:var(--lime)"># Project Name</span><br>
+        <span style="color:rgba(255,255,255,.4)">One sentence — what it does.</span><br><br>
+        <span style="color:var(--lime)">## Tech Stack</span><br>
+        <span style="color:rgba(255,255,255,.4)">React · Node.js · MongoDB</span><br><br>
+        <span style="color:var(--lime)">## How to Run</span><br>
+        <span style="color:rgba(255,255,255,.4)">npm install &amp;&amp; npm start</span><br><br>
+        <span style="color:var(--lime)">## Screenshot</span><br>
+        <span style="color:rgba(255,255,255,.4)">[image here]</span><br><br>
+        <span style="color:var(--lime)">## What I Learned</span><br>
+        <span style="color:rgba(255,255,255,.4)">Honest reflection.</span>
+      </div>
+      <div style="font-size:.65rem;color:rgba(255,255,255,.35);font-family:var(--mono);text-align:center">This README structure itself demonstrates communication skill.</div>
+    </div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-07.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-09.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot active" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-09.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-07.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-09.html':'slide-07.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Portfolio Building for IT',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

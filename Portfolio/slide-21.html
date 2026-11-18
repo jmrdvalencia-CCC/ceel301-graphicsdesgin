@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 21 / 21 — End</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+#pbar{width:100%}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.04) 1px,transparent 1px);background-size:40px 40px;z-index:0}
+</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">21 / 21</div>
+<section class="slide bg-dark">
+  <div class="grid-bg"></div>
+  <div style="text-align:center;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:16px">
+    <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.3em;color:rgba(99,102,241,.45);text-transform:uppercase">Module 09 Complete</div>
+    <div style="font-family:var(--serif);font-size:clamp(2rem,5vw,4rem);font-weight:900;color:#fff;line-height:1">Now go build it.</div>
+    <div style="font-family:var(--serif);font-size:clamp(1rem,2.5vw,1.8rem);font-style:italic;color:#818cf8">Your portfolio starts today.</div>
+    <div style="width:48px;height:2px;background:linear-gradient(90deg,#6366f1,#38bdf8);border-radius:1px;margin:4px 0"></div>
+    <div style="font-size:.75rem;color:rgba(255,255,255,.4);max-width:480px;line-height:1.7">Every project you have ever built is a starting point. Document it, design it, publish it. The best time to start was yesterday. The second best time is now.</div>
+    <a href="slide-01.html" style="margin-top:8px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.4);color:#a5b4fc;text-decoration:none;padding:10px 24px;border-radius:24px;font-size:.72rem;font-family:var(--mono);letter-spacing:.08em;transition:all .2s" onmouseover="this.style.background='rgba(99,102,241,.3)'" onmouseout="this.style.background='rgba(99,102,241,.15)'">← Back to Start</a>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-20.html"><i class="fas fa-chevron-left"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot active" onclick="location='slide-21.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-20.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50&&dx>0)location='slide-20.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Portfolio Building for IT',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

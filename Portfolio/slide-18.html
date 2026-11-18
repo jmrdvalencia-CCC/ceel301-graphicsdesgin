@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 18 / 21 — Discussion</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:86%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">18 / 21</div>
+<section class="slide bg-violet">
+  <div class="eyebrow"><span class="ln"></span>Discussion</div>
+  <div class="ttl" style="text-align:center;margin-bottom:8px">Let's Talk About <span class="acc">Your Work</span></div>
+  <div style="font-size:.78rem;color:rgba(255,255,255,.4);text-align:center;margin-bottom:24px;font-family:var(--mono)">Share openly — there are no wrong answers</div>
+  <div class="two-col" style="max-width:860px;gap:18px">
+    <div style="background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.35);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;gap:14px">
+      <div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#818cf8">Question 01</div>
+      <div style="font-size:1.15rem;font-weight:700;color:#fff;line-height:1.5">Do you have any existing project — school, personal, or work — that you could put in a portfolio right now?</div>
+    </div>
+    <div style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.3);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;gap:14px">
+      <div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#38bdf8">Question 02</div>
+      <div style="font-size:1.15rem;font-weight:700;color:#fff;line-height:1.5">If an employer asked you right now — "show me your work" — what would you show them?</div>
+    </div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-17.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-19.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot active" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-19.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-17.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-19.html':'slide-17.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Portfolio Building for IT',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

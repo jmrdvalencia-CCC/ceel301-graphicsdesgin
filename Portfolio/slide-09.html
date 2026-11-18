@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 9 / 20 — Visual Hierarchy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:45%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">9 / 20</div>
+<section class="slide bg-ink">
+  <div class="eyebrow"><span class="ln"></span>Part 3 — Design &amp; Structure</div>
+  <div class="ttl" style="text-align:center;margin-bottom:18px">Visual Hierarchy <span class="acc">in a Portfolio</span></div>
+  <div class="two-col" style="max-width:920px;gap:18px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;color:var(--cyan);text-transform:uppercase;margin-bottom:4px">Hierarchy Levels</div>
+      <div class="rung"><span class="rn" style="font-size:.7rem">H1</span><div class="rt"><div class="rtitle">Name / Title</div><div class="rdesc">Largest element on the page. First thing the eye lands on.</div></div></div>
+      <div class="rung lime"><span class="rn lime" style="font-size:.7rem">H2</span><div class="rt"><div class="rtitle">Section Headings</div><div class="rdesc">Clearly separated, consistent size. About · Skills · Projects · Contact</div></div></div>
+      <div class="rung coral"><span class="rn coral" style="font-size:.7rem">H3</span><div class="rt"><div class="rtitle">Project Titles</div><div class="rdesc">Bold and scannable. Employer should read all project names in 5 seconds.</div></div></div>
+      <div class="rung violet"><span class="rn violet" style="font-size:.7rem">P</span><div class="rt"><div class="rtitle">Body Text</div><div class="rdesc">Readable, minimum 14px on screen. Short paragraphs, not walls of text.</div></div></div>
+      <div class="rung amber"><span class="rn amber" style="font-size:.7rem">SM</span><div class="rt"><div class="rtitle">Labels / Tags</div><div class="rdesc">Small, muted. Tech stack tags, dates, categories — supporting role only.</div></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;color:var(--cyan);text-transform:uppercase;margin-bottom:4px">Layout Principles</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:rgba(0,194,224,.07);border:1px solid rgba(0,194,224,.2);border-radius:10px;padding:12px 16px"><div style="font-size:.75rem;font-weight:700;color:#fff;margin-bottom:3px">Use a grid</div><div style="font-size:.67rem;color:rgba(255,255,255,.55)">Align everything to a consistent column structure. Misaligned elements feel amateur.</div></div>
+        <div style="background:rgba(0,194,224,.07);border:1px solid rgba(0,194,224,.2);border-radius:10px;padding:12px 16px"><div style="font-size:.75rem;font-weight:700;color:#fff;margin-bottom:3px">Whitespace is not wasted space</div><div style="font-size:.67rem;color:rgba(255,255,255,.55)">It gives the eye room to rest and makes content feel premium, not cluttered.</div></div>
+        <div style="background:rgba(0,194,224,.07);border:1px solid rgba(0,194,224,.2);border-radius:10px;padding:12px 16px"><div style="font-size:.75rem;font-weight:700;color:#fff;margin-bottom:3px">2 fonts maximum</div><div style="font-size:.67rem;color:rgba(255,255,255,.55)">One for headings, one for body. More than two fonts looks uncontrolled.</div></div>
+        <div style="background:rgba(0,194,224,.07);border:1px solid rgba(0,194,224,.2);border-radius:10px;padding:12px 16px"><div style="font-size:.75rem;font-weight:700;color:#fff;margin-bottom:3px">1–2 accent colors</div><div style="font-size:.67rem;color:rgba(255,255,255,.55)">Consistent with your personal brand. Pick one and use it everywhere.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-08.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-10.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot active" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-10.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-08.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-10.html':'slide-08.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Portfolio Building for IT',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

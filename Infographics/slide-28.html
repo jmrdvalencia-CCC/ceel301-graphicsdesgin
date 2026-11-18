@@ -3,52 +3,101 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="shared.css">
-<style>#pbar{width:78%}</style>
+<style>
+#pbar{width:78%}
+.act-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:960px;width:100%}
+.ds-card{border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.ds-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase}
+.ds-title{font-size:.82rem;font-weight:700;color:#fff;line-height:1.3}
+.ds-rows{display:flex;flex-direction:column;gap:4px}
+.ds-row{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.ds-row span{font-size:.62rem;color:rgba(255,255,255,.65)}
+.bar-wrap{width:56px;height:5px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden;flex-shrink:0}
+.bar-fill{height:100%;border-radius:3px}
+.ds-val{font-size:.6rem;font-family:var(--mono);min-width:28px;text-align:right}
+.ds-steps{display:flex;flex-direction:column;gap:5px}
+.ds-step{display:flex;gap:8px;align-items:flex-start}
+.step-num{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.58rem;font-weight:700;flex-shrink:0;margin-top:1px}
+.step-txt{font-size:.62rem;color:rgba(255,255,255,.65);line-height:1.4}
+.ds-compare{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.cmp-col{border-radius:8px;padding:8px;text-align:center}
+.cmp-head{font-size:.6rem;font-weight:700;margin-bottom:4px}
+.cmp-items{font-size:.58rem;color:rgba(255,255,255,.5);line-height:1.5}
+.rules-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+.rule-pill{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:5px 12px;font-size:.62rem;color:rgba(255,255,255,.6)}
+.rule-pill i{font-size:.65rem;color:rgba(255,255,255,.4)}
+.submit-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 20px;display:flex;align-items:center;gap:12px;max-width:520px;margin-top:6px}
+.submit-box i{font-size:1.1rem;color:var(--cyan)}
+.submit-txt{font-size:.68rem;color:rgba(255,255,255,.65);line-height:1.5}
+.submit-txt strong{color:#fff}
+@media(max-width:700px){.act-grid{grid-template-columns:1fr}}
+</style>
 </head><body><div id="deck">
 <div id="pbar"></div><div id="ctr">28 / 36</div>
 <section class="slide bg-violet">
   <div class="eyebrow"><span class="ln"></span>Part 5 — Group Activity</div>
-  <div class="ttl" style="text-align:center;margin-bottom:6px">Group Activity: <span class="acc">Build a Mini Infographic</span></div>
-  <div style="font-size:.8rem;color:rgba(255,255,255,.5);text-align:center;margin-bottom:16px;font-family:var(--mono)">10 min design · 5 min presentations · 3 groups</div>
-  <div class="three-col" style="max-width:940px;gap:16px">
-    <div style="background:rgba(0,194,224,.08);border:1px solid rgba(0,194,224,.3);border-radius:14px;padding:18px">
-      <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;color:var(--cyan);margin-bottom:8px">GROUP 1</div>
-      <div style="font-size:.85rem;font-weight:700;color:#fff;margin-bottom:8px">Statistical Infographic</div>
-      <div style="font-size:.65rem;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:10px"><strong style="color:rgba(255,255,255,.8)">Dataset:</strong> Social media usage among Filipino youth (15–24):</div>
-      <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:10px">
-        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:.65rem;color:rgba(255,255,255,.7)">YouTube</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:6px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden"><div style="width:89%;height:100%;background:#00c2e0;border-radius:3px"></div></div><span style="font-size:.62rem;color:var(--cyan);font-family:var(--mono)">89%</span></div></div>
-        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:.65rem;color:rgba(255,255,255,.7)">Facebook</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:6px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden"><div style="width:78%;height:100%;background:#7ecb35;border-radius:3px"></div></div><span style="font-size:.62rem;color:var(--lime);font-family:var(--mono)">78%</span></div></div>
-        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:.65rem;color:rgba(255,255,255,.7)">TikTok</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:6px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden"><div style="width:65%;height:100%;background:#ff6b6b;border-radius:3px"></div></div><span style="font-size:.62rem;color:var(--coral);font-family:var(--mono)">65%</span></div></div>
-        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:.65rem;color:rgba(255,255,255,.7)">Instagram</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:6px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden"><div style="width:54%;height:100%;background:#9b59f5;border-radius:3px"></div></div><span style="font-size:.62rem;color:var(--violet);font-family:var(--mono)">54%</span></div></div>
-        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:.65rem;color:rgba(255,255,255,.7)">Twitter/X</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:6px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden"><div style="width:31%;height:100%;background:#f5a623;border-radius:3px"></div></div><span style="font-size:.62rem;color:var(--amber);font-family:var(--mono)">31%</span></div></div>
+  <div class="ttl" style="text-align:center;margin-bottom:4px">Group Activity: <span class="acc">Build a Mini Infographic</span></div>
+  <div style="font-size:.75rem;color:rgba(255,255,255,.45);text-align:center;margin-bottom:14px;font-family:var(--mono)">Work with your group · Pick one dataset · Design &amp; present</div>
+
+  <!-- Dataset cards -->
+  <div class="act-grid">
+
+    <!-- Dataset A -->
+    <div class="ds-card" style="background:rgba(0,194,224,.08);border:1px solid rgba(0,194,224,.3)">
+      <div class="ds-label" style="color:var(--cyan)">Dataset A — Statistical</div>
+      <div class="ds-title">Social Media Usage Among Filipino Youth (15–24)</div>
+      <div class="ds-rows">
+        <div class="ds-row"><span>YouTube</span><div class="bar-wrap"><div class="bar-fill" style="width:89%;background:#00c2e0"></div></div><span class="ds-val" style="color:var(--cyan)">89%</span></div>
+        <div class="ds-row"><span>Facebook</span><div class="bar-wrap"><div class="bar-fill" style="width:78%;background:#7ecb35"></div></div><span class="ds-val" style="color:var(--lime)">78%</span></div>
+        <div class="ds-row"><span>TikTok</span><div class="bar-wrap"><div class="bar-fill" style="width:65%;background:#ff6b6b"></div></div><span class="ds-val" style="color:var(--coral)">65%</span></div>
+        <div class="ds-row"><span>Instagram</span><div class="bar-wrap"><div class="bar-fill" style="width:54%;background:#9b59f5"></div></div><span class="ds-val" style="color:var(--violet)">54%</span></div>
+        <div class="ds-row"><span>Twitter / X</span><div class="bar-wrap"><div class="bar-fill" style="width:31%;background:#f5a623"></div></div><span class="ds-val" style="color:var(--amber)">31%</span></div>
       </div>
-      <div style="font-size:.62rem;color:rgba(255,255,255,.5);line-height:1.4">Choose chart type · Write headline · Apply 1 accent color for highest value, grey for rest</div>
+      <div style="font-size:.6rem;color:rgba(255,255,255,.4);line-height:1.4;margin-top:2px">Suggested type: Bar chart or pictograph</div>
     </div>
-    <div style="background:rgba(126,203,53,.08);border:1px solid rgba(126,203,53,.3);border-radius:14px;padding:18px">
-      <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;color:var(--lime);margin-bottom:8px">GROUP 2</div>
-      <div style="font-size:.85rem;font-weight:700;color:#fff;margin-bottom:8px">Process Infographic</div>
-      <div style="font-size:.65rem;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:10px"><strong style="color:rgba(255,255,255,.8)">Dataset:</strong> The 5 steps of the design process:</div>
-      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
-        <div style="display:flex;gap:8px;align-items:center"><div style="width:20px;height:20px;border-radius:50%;background:rgba(126,203,53,.3);border:1px solid rgba(126,203,53,.5);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;font-weight:700;color:var(--lime);flex-shrink:0">1</div><span style="font-size:.65rem;color:rgba(255,255,255,.7)">Research — understand the problem</span></div>
-        <div style="display:flex;gap:8px;align-items:center"><div style="width:20px;height:20px;border-radius:50%;background:rgba(126,203,53,.3);border:1px solid rgba(126,203,53,.5);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;font-weight:700;color:var(--lime);flex-shrink:0">2</div><span style="font-size:.65rem;color:rgba(255,255,255,.7)">Ideate — generate concepts</span></div>
-        <div style="display:flex;gap:8px;align-items:center"><div style="width:20px;height:20px;border-radius:50%;background:rgba(126,203,53,.3);border:1px solid rgba(126,203,53,.5);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;font-weight:700;color:var(--lime);flex-shrink:0">3</div><span style="font-size:.65rem;color:rgba(255,255,255,.7)">Design — build in software</span></div>
-        <div style="display:flex;gap:8px;align-items:center"><div style="width:20px;height:20px;border-radius:50%;background:rgba(126,203,53,.3);border:1px solid rgba(126,203,53,.5);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;font-weight:700;color:var(--lime);flex-shrink:0">4</div><span style="font-size:.65rem;color:rgba(255,255,255,.7)">Review — evaluate and revise</span></div>
-        <div style="display:flex;gap:8px;align-items:center"><div style="width:20px;height:20px;border-radius:50%;background:rgba(126,203,53,.3);border:1px solid rgba(126,203,53,.5);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;font-weight:700;color:var(--lime);flex-shrink:0">5</div><span style="font-size:.65rem;color:rgba(255,255,255,.7)">Deliver — export correct formats</span></div>
+
+    <!-- Dataset B -->
+    <div class="ds-card" style="background:rgba(126,203,53,.08);border:1px solid rgba(126,203,53,.3)">
+      <div class="ds-label" style="color:var(--lime)">Dataset B — Process</div>
+      <div class="ds-title">The 5-Step Graphic Design Process</div>
+      <div class="ds-steps">
+        <div class="ds-step"><div class="step-num" style="background:rgba(126,203,53,.25);border:1px solid rgba(126,203,53,.5);color:var(--lime)">1</div><div class="step-txt"><strong style="color:rgba(255,255,255,.8)">Research</strong> — understand the problem &amp; audience</div></div>
+        <div class="ds-step"><div class="step-num" style="background:rgba(126,203,53,.25);border:1px solid rgba(126,203,53,.5);color:var(--lime)">2</div><div class="step-txt"><strong style="color:rgba(255,255,255,.8)">Ideate</strong> — brainstorm &amp; sketch concepts</div></div>
+        <div class="ds-step"><div class="step-num" style="background:rgba(126,203,53,.25);border:1px solid rgba(126,203,53,.5);color:var(--lime)">3</div><div class="step-txt"><strong style="color:rgba(255,255,255,.8)">Design</strong> — build in software</div></div>
+        <div class="ds-step"><div class="step-num" style="background:rgba(126,203,53,.25);border:1px solid rgba(126,203,53,.5);color:var(--lime)">4</div><div class="step-txt"><strong style="color:rgba(255,255,255,.8)">Review</strong> — evaluate &amp; revise</div></div>
+        <div class="ds-step"><div class="step-num" style="background:rgba(126,203,53,.25);border:1px solid rgba(126,203,53,.5);color:var(--lime)">5</div><div class="step-txt"><strong style="color:rgba(255,255,255,.8)">Deliver</strong> — export in correct format</div></div>
       </div>
-      <div style="font-size:.62rem;color:rgba(255,255,255,.5);line-height:1.4">Choose layout · Design 1 icon per step using basic shapes · Sketch complete layout</div>
+      <div style="font-size:.6rem;color:rgba(255,255,255,.4);line-height:1.4;margin-top:2px">Suggested type: Timeline or flowchart</div>
     </div>
-    <div style="background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.3);border-radius:14px;padding:18px">
-      <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;color:var(--coral);margin-bottom:8px">GROUP 3</div>
-      <div style="font-size:.85rem;font-weight:700;color:#fff;margin-bottom:8px">Comparison Infographic</div>
-      <div style="font-size:.65rem;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:10px"><strong style="color:rgba(255,255,255,.8)">Dataset:</strong> Raster vs. Vector graphics:</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px">
-        <div style="background:rgba(0,194,224,.1);border-radius:6px;padding:6px;text-align:center"><div style="font-size:.6rem;font-weight:700;color:var(--cyan);margin-bottom:3px">RASTER</div><div style="font-size:.58rem;color:rgba(255,255,255,.5);line-height:1.4">Pixels · Loses quality · JPG/PNG · Photography</div></div>
-        <div style="background:rgba(255,107,107,.1);border-radius:6px;padding:6px;text-align:center"><div style="font-size:.6rem;font-weight:700;color:var(--coral);margin-bottom:3px">VECTOR</div><div style="font-size:.58rem;color:rgba(255,255,255,.5);line-height:1.4">Math paths · Scales perfectly · SVG/AI · Logos</div></div>
+
+    <!-- Dataset C -->
+    <div class="ds-card" style="background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.3)">
+      <div class="ds-label" style="color:var(--coral)">Dataset C — Comparison</div>
+      <div class="ds-title">Raster vs. Vector Graphics</div>
+      <div class="ds-compare">
+        <div class="cmp-col" style="background:rgba(0,194,224,.1)"><div class="cmp-head" style="color:var(--cyan)">RASTER</div><div class="cmp-items">Made of pixels<br>Loses quality on scale<br>JPG · PNG · PSD<br>Best for photos</div></div>
+        <div class="cmp-col" style="background:rgba(255,107,107,.1)"><div class="cmp-head" style="color:var(--coral)">VECTOR</div><div class="cmp-items">Math-based paths<br>Scales infinitely<br>SVG · AI · EPS<br>Best for logos</div></div>
       </div>
-      <div style="font-size:.62rem;color:rgba(255,255,255,.5);line-height:1.4">Two-column layout · 1 icon per type · Color system · Write headline stating key difference</div>
+      <div style="font-size:.6rem;color:rgba(255,255,255,.4);line-height:1.4;margin-top:2px">Suggested type: Side-by-side comparison layout</div>
     </div>
+
   </div>
-  <div style="margin-top:12px;font-size:.7rem;color:rgba(255,255,255,.4);text-align:center;font-family:var(--mono)">Present: "We chose a ___ because ___. The headline insight is ___."</div>
+
+  <!-- Rules row -->
+  <div class="rules-row">
+    <div class="rule-pill"><i class="fas fa-users"></i> Work as a group</div>
+    <div class="rule-pill"><i class="fas fa-desktop"></i> Digital output only</div>
+    <div class="rule-pill"><i class="fas fa-file-image"></i> Export as PNG</div>
+    <div class="rule-pill"><i class="fas fa-clock"></i> 20 min to design</div>
+    <div class="rule-pill"><i class="fas fa-presentation-screen fa-chalkboard"></i> 3 min group presentation</div>
+  </div>
+
+  <!-- Submission note -->
+  <div class="submit-box">
+    <i class="fas fa-upload"></i>
+    <div class="submit-txt"><strong>Individual Submission:</strong> Each member submits the same group output PNG file. Filename format: <span style="font-family:var(--mono);color:var(--cyan)">GroupName_Dataset_Surname.png</span></div>
+  </div>
+
 </section>
 <a class="nbtn" id="bp" href="slide-27.html"><i class="fas fa-chevron-left"></i></a>
 <a class="nbtn" id="bn" href="slide-29.html"><i class="fas fa-chevron-right"></i></a>

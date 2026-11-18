@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 19 / 21 — References</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:90%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">19 / 21</div>
+<section class="slide bg-ink">
+  <div class="eyebrow"><span class="ln"></span>References</div>
+  <div class="ttl" style="text-align:center;margin-bottom:24px"><span class="acc">References</span></div>
+  <div style="display:flex;flex-direction:column;gap:10px;max-width:700px;width:100%">
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 18px;font-size:.72rem;color:rgba(255,255,255,.65);line-height:1.6">Norman, D. A. (2013). <em style="color:rgba(255,255,255,.85)">The Design of Everyday Things.</em> Basic Books.</div>
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 18px;font-size:.72rem;color:rgba(255,255,255,.65);line-height:1.6">Google. (2024). <em style="color:rgba(255,255,255,.85)">Web Fundamentals: Responsive Design.</em> developers.google.com</div>
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 18px;font-size:.72rem;color:rgba(255,255,255,.65);line-height:1.6">GitHub Docs. (2024). <em style="color:rgba(255,255,255,.85)">GitHub Pages.</em> docs.github.com</div>
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 18px;font-size:.72rem;color:rgba(255,255,255,.65);line-height:1.6">Interaction Design Foundation. (2024). <em style="color:rgba(255,255,255,.85)">How to Build a UX Portfolio.</em> interaction-design.org</div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-18.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-20.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot active" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button><button class="dot" onclick="location='slide-21.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-20.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-18.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-20.html':'slide-18.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Portfolio Building for IT',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

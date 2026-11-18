@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 7 / 20 — Writing a Project Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:35%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">7 / 20</div>
+<section class="slide bg-ink">
+  <div class="eyebrow"><span class="ln"></span>Part 2 — What to Include</div>
+  <div class="ttl" style="text-align:center;margin-bottom:6px">Writing a <span class="acc">Project Case Study</span></div>
+  <div style="font-size:.78rem;color:rgba(255,255,255,.45);text-align:center;margin-bottom:18px">Every project entry must answer these 5 questions</div>
+  <div style="display:flex;flex-direction:column;gap:10px;max-width:720px;width:100%">
+    <div class="step-row"><div class="step-num">01</div><div><div class="step-title">What was the problem?</div><div class="step-desc">Context and goal — why did this project exist? Who needed it?</div></div></div>
+    <div class="step-row lime"><div class="step-num lime">02</div><div><div class="step-title">What did you build?</div><div class="step-desc">A brief, plain-language description of the solution — one or two sentences.</div></div></div>
+    <div class="step-row coral"><div class="step-num coral">03</div><div><div class="step-title">How did you build it?</div><div class="step-desc">Tools, stack, and process. Be specific — "React + Firebase" beats "web technologies".</div></div></div>
+    <div class="step-row violet"><div class="step-num violet">04</div><div><div class="step-title">What was the result?</div><div class="step-desc">Outcome, metrics, or feedback. If you have numbers, use them.</div></div></div>
+    <div class="step-row amber"><div class="step-num amber">05</div><div><div class="step-title">What did you learn?</div><div class="step-desc">Honest reflection. What would you do differently? This shows maturity.</div></div></div>
+  </div>
+  <div style="margin-top:14px;font-family:var(--mono);font-size:.62rem;color:rgba(255,255,255,.3);text-align:center">If you can answer all 5, you are ready to present that project in an interview.</div>
+</section>
+<a class="nbtn" id="bp" href="slide-06.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-08.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot active" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-08.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-06.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-08.html':'slide-06.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Portfolio Building for IT',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

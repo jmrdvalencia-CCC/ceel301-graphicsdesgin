@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 3 / 20 — Who Needs a Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:15%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">3 / 20</div>
+<section class="slide bg-ink">
+  <div class="eyebrow"><span class="ln"></span>Part 1 — What Is a Portfolio</div>
+  <div class="ttl" style="text-align:center;margin-bottom:18px">Who Needs a Portfolio <span class="acc">in IT?</span></div>
+  <div class="cards" style="max-width:960px">
+    <div class="card" style="border-color:rgba(99,102,241,.3)"><div class="ci">💻</div><div class="ct">Web &amp; Software Dev</div><div class="cb">Source code, live demos, GitHub repos, side projects</div></div>
+    <div class="card" style="border-color:rgba(167,139,250,.3)"><div class="ci">🎨</div><div class="ct">UI/UX Designer</div><div class="cb">Wireframes, prototypes, Figma files, case studies</div></div>
+    <div class="card" style="border-color:rgba(56,189,248,.3)"><div class="ci">📊</div><div class="ct">Data Analyst</div><div class="cb">Dashboards, reports, visualizations, SQL queries</div></div>
+    <div class="card" style="border-color:rgba(126,203,53,.3)"><div class="ci">🔍</div><div class="ct">QA Engineer</div><div class="cb">Test plans, bug reports, automation scripts, test cases</div></div>
+    <div class="card" style="border-color:rgba(245,166,35,.3)"><div class="ci">🌐</div><div class="ct">Network / Sysadmin</div><div class="cb">Lab setups, network diagrams, documentation, certs</div></div>
+    <div class="card" style="border-color:rgba(255,107,107,.3)"><div class="ci">🎓</div><div class="ct">IT Student</div><div class="cb">Academic projects, course activities, personal builds — <strong style="color:#ff9898">start now</strong></div></div>
+  </div>
+  <div style="margin-top:16px;font-family:var(--mono);font-size:.65rem;color:rgba(255,255,255,.3);text-align:center">Every IT role has something worth showing. The question is — are you showing it?</div>
+</section>
+<a class="nbtn" id="bp" href="slide-02.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-04.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot active" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-04.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-02.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-04.html':'slide-02.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Portfolio Building for IT',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>

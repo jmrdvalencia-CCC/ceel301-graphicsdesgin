@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Slide 11 / 20 — Mobile Responsiveness</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>#pbar{width:55%}</style>
+</head><body><div id="deck">
+<div id="pbar"></div><div id="ctr">11 / 20</div>
+<section class="slide bg-cyan">
+  <div class="eyebrow"><span class="ln"></span>Part 3 — Design &amp; Structure</div>
+  <div class="ttl" style="text-align:center;margin-bottom:8px">Mobile <span class="acc">Responsiveness</span></div>
+  <div style="font-size:.78rem;color:rgba(255,255,255,.45);text-align:center;margin-bottom:20px">More than 50% of recruiters view portfolios on mobile</div>
+  <div class="three-col" style="max-width:860px;gap:14px">
+    <div style="background:rgba(0,194,224,.08);border:1px solid rgba(0,194,224,.25);border-radius:14px;padding:22px 18px;text-align:center">
+      <div style="font-size:2rem;margin-bottom:10px">📱</div>
+      <div style="font-size:.8rem;font-weight:700;color:#fff;margin-bottom:6px">Stack to Single Column</div>
+      <div style="font-size:.68rem;color:rgba(255,255,255,.55);line-height:1.5">Multi-column layouts must collapse to a single column on screens below 768px.</div>
+    </div>
+    <div style="background:rgba(0,194,224,.08);border:1px solid rgba(0,194,224,.25);border-radius:14px;padding:22px 18px;text-align:center">
+      <div style="font-size:2rem;margin-bottom:10px">👆</div>
+      <div style="font-size:.8rem;font-weight:700;color:#fff;margin-bottom:6px">Large Tap Targets</div>
+      <div style="font-size:.68rem;color:rgba(255,255,255,.55);line-height:1.5">Buttons and links must be at least 44×44px. Tiny links are impossible to tap accurately.</div>
+    </div>
+    <div style="background:rgba(0,194,224,.08);border:1px solid rgba(0,194,224,.25);border-radius:14px;padding:22px 18px;text-align:center">
+      <div style="font-size:2rem;margin-bottom:10px">⚡</div>
+      <div style="font-size:.8rem;font-weight:700;color:#fff;margin-bottom:6px">Load Fast</div>
+      <div style="font-size:.68rem;color:rgba(255,255,255,.55);line-height:1.5">Compress images. Avoid heavy animations. A slow portfolio loses the viewer before they see your work.</div>
+    </div>
+  </div>
+  <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+    <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 16px;font-size:.68rem;color:rgba(255,255,255,.6)"><i class="fas fa-circle-check" style="color:var(--cyan);margin-right:6px"></i>Test on your phone before sharing</div>
+    <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 16px;font-size:.68rem;color:rgba(255,255,255,.6)"><i class="fas fa-circle-check" style="color:var(--cyan);margin-right:6px"></i>Use Chrome DevTools mobile view</div>
+    <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 16px;font-size:.68rem;color:rgba(255,255,255,.6)"><i class="fas fa-circle-check" style="color:var(--cyan);margin-right:6px"></i>Use relative units: %, rem, vw</div>
+  </div>
+</section>
+<a class="nbtn" id="bp" href="slide-10.html"><i class="fas fa-chevron-left"></i></a>
+<a class="nbtn" id="bn" href="slide-12.html"><i class="fas fa-chevron-right"></i></a>
+<div id="dots"><button class="dot" onclick="location='slide-01.html'"></button><button class="dot" onclick="location='slide-02.html'"></button><button class="dot" onclick="location='slide-03.html'"></button><button class="dot" onclick="location='slide-04.html'"></button><button class="dot" onclick="location='slide-05.html'"></button><button class="dot" onclick="location='slide-06.html'"></button><button class="dot" onclick="location='slide-07.html'"></button><button class="dot" onclick="location='slide-08.html'"></button><button class="dot" onclick="location='slide-09.html'"></button><button class="dot" onclick="location='slide-10.html'"></button><button class="dot active" onclick="location='slide-11.html'"></button><button class="dot" onclick="location='slide-12.html'"></button><button class="dot" onclick="location='slide-13.html'"></button><button class="dot" onclick="location='slide-14.html'"></button><button class="dot" onclick="location='slide-15.html'"></button><button class="dot" onclick="location='slide-16.html'"></button><button class="dot" onclick="location='slide-17.html'"></button><button class="dot" onclick="location='slide-18.html'"></button><button class="dot" onclick="location='slide-19.html'"></button><button class="dot" onclick="location='slide-20.html'"></button></div>
+<button id="sbtn" onclick="share()"><i class="fas fa-share-alt"></i> Share</button><div id="toast">📋 Link copied!</div>
+</div><script>
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')location='slide-12.html';if(e.key==='ArrowLeft'||e.key==='ArrowUp')location='slide-10.html';});
+var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)location=dx<0?'slide-12.html':'slide-10.html';});
+function share(){var u=location.href;if(navigator.share){navigator.share({title:'Portfolio Building for IT',url:u}).catch(function(){});}else{navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);});}}
+</script></body></html>
